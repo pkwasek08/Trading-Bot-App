@@ -1,0 +1,40 @@
+html,
+body {
+    height: 100%;
+    background: #E7EAEE;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+    margin: 5px;
+}
+
+.mat-simple-snackbar {
+    font-size: 20px;
+}
+
+.mat-simple-snackbar-action span {
+    color: white;
+    font-size: 25px;
+}
+
+.custom-css-class-success {
+    font-size: 20px;
+    background-color: #439b4b;
+}
+
+.custom-css-class-error {
+    background-color: #D55656;
+}
+
+.custom-css-class-info {
+    background-color: #92a0ec;
+}
+
+.custom-css-class-warming {
+    background-color: #ffce2e;
+}

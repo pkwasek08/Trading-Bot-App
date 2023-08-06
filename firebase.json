@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "target": "trading-bot-app",
+    "public": "dist/trading-bot-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

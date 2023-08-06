@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tradingbot-beb3b": {
+      "hosting": {
+        "trading-bot-app": [
+          "tradingbot-beb3b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tradingbot-beb3b"
+  }
+}
