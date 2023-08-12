@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StockBarComponent } from './stock-bar/stock-bar.component';
+import { ChartWidgetComponent } from './chart-widget/chart-widget.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+    StockBarComponent,
+    ChartWidgetComponent
   ],
   imports: [
     BrowserModule,
