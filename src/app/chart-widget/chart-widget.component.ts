@@ -20,7 +20,7 @@ export class ChartWidgetComponent implements OnInit {
         symbol: 'NASDAQ:AAPL',
         interval: 'D',
         timezone: 'Etc/UTC',
-        theme: 'dark',
+        theme: 'light',
         style: '1',
         locale: 'en',
         enable_publishing: false,

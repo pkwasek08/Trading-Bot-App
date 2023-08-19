@@ -1,0 +1,104 @@
+<div style="display: flex; justify-content: center;">
+    <div id="newTestPanel"
+        style="margin-bottom: 20px; height: max-content; background: white;width: fit-content; min-width: fit-content; padding: 40px; border-radius: 10px; font-family: Palatino; text-align: center; margin-left: 10px;">
+        <form [formGroup]="form" (ngSubmit)="onClickSubmitBtn()">
+            <table>
+                <tr>
+                    <h2 style="font-family: Palatino;">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Bot set</mat-label>
+                            <mat-select formControlName="botSet">
+                                <mat-option value="NEW_BOT">NEW_BOT</mat-option>
+                                <!--<mat-option *ngFor="let testSetsInfo of testSetsInfoList" [value]="testSetsInfo.id">
+                                {{testSetsInfo.testName}}
+                            </mat-option>-->
+                            </mat-select>
+                        </mat-form-field>
+                    </h2>
+                </tr>
+                <tr>
+                    <mat-form-field>
+                        <mat-label>Bot Name</mat-label>
+                        <input type="text" matInput placeholder="Bot name" formControlName="name">
+                        <mat-error *ngIf="form.get('name')?.hasError('required')">Bot name is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Stock</mat-label>
+                        <mat-select formControlName="stock">
+                            <mat-option *ngFor="let stock of stockList" [value]="stock">
+                                {{stock}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.get('stock')?.hasError('required')">Stock is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Budget</mat-label>
+                        <input type="number" min="1" matInput placeholder="Budget" formControlName="budget">
+                        <mat-error *ngIf="form.get('budget')?.hasError('required')">Budget is required</mat-error>
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field>
+                        <mat-label>Start date</mat-label>
+                        <input matInput [matDatepicker]="pickerStart" formControlName="startDate">
+                        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerStart></mat-datepicker>
+                        <mat-error *ngIf="form.get('startDate')?.hasError('required')">Start date is
+                            required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>End date</mat-label>
+                        <input matInput [matDatepicker]="pickerEnd" formControlName="endDate">
+                        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerEnd></mat-datepicker>
+                        <mat-error *ngIf="form.get('endDate')?.hasError('required')">Start date is
+                            required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Resample Freq</mat-label>
+                        <mat-select formControlName="resampleFreq">
+                            <mat-option value="30min">30min</mat-option>
+                            <mat-option value="1h">1h</mat-option>
+                            <mat-option value="4h">4h</mat-option>
+                            <mat-option value="1d">1d</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.get('resampleFreq')?.hasError('required')">Resample Freq is
+                            required</mat-error>
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field>
+                        <mat-label>Rsi Height Level</mat-label>
+                        <input type="number" min="1" matInput placeholder="Rsi Height Level"
+                        formControlName="rsiHeightLevel">
+                        <mat-error *ngIf="form.get('rsiHeightLevel')?.hasError('required')">Rsi Height Level is
+                            required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Rsi Low Level</mat-label>
+                        <input type="number" min="1" matInput placeholder="rsiLowLevel" formControlName="rsiLowLevel">
+                        <mat-error *ngIf="form.get('rsiLowLevel')?.hasError('required')">Rsi Low Level is
+                            required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Stop Loss</mat-label>
+                        <input type="number" min="1" matInput placeholder="Stop Loss" formControlName="stopLoss">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Take Profit</mat-label>
+                        <input type="number" min="1" matInput placeholder="Take Profit" formControlName="takeProfit">
+                    </mat-form-field>
+                </tr>
+                <tr *ngIf="isShowSpinner == false" style="text-align: -webkit-center; height: 100px;">
+                    <button mat-raised-button type="submit" class="btn btn-primary"
+                        style="background-color: #198754; color: white;">Submit</button>
+                    <button mat-raised-button type="submit" class="btn btn-primary"
+                        style="background-color: #0d6efd; color: white;" (click)="onClickResetBtn()">Reset</button>
+                </tr>
+                <tr style="text-align: -webkit-center; height: 100px;" *ngIf="isShowSpinner">
+                    <mat-spinner></mat-spinner>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
