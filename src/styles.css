@@ -13,31 +13,37 @@ button {
     margin: 5px;
 }
 
-.mat-simple-snackbar {
-    font-size: 20px;
+.mat-mdc-snack-bar-label {
+    font-size: 20px !important;
 }
 
-.mat-simple-snackbar-action span {
+.mat-mdc-snack-bar-actions span {
     color: white;
     font-size: 25px;
 }
 
 .custom-css-class-success {
-    font-size: 20px;
-    background-color: #439b4b;
+    --mdc-snackbar-container-color: #439b4b;
 }
 
 .custom-css-class-error {
-    background-color: #D55656;
+    --mdc-snackbar-container-color: #D55656;
 }
 
 .custom-css-class-info {
-    background-color: #92a0ec;
+    --mdc-snackbar-container-color: #92a0ec;
 }
 
 .custom-css-class-warming {
-    background-color: #ffce2e;
+    --mdc-snackbar-container-color: #ffce2e;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

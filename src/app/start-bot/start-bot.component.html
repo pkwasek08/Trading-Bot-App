@@ -1,10 +1,10 @@
 <div style="display: flex; justify-content: center;">
     <div id="newTestPanel"
-        style="margin-bottom: 20px; height: max-content; background: white;width: fit-content; min-width: fit-content; padding: 40px; border-radius: 10px; font-family: Palatino; text-align: center; margin-left: 10px;">
+        style="margin-bottom: 20px; height: max-content; background: white;width: fit-content; min-width: fit-content; padding: 20px; border-radius: 10px; text-align: center; margin-left: 10px;">
         <form [formGroup]="form" (ngSubmit)="onClickSubmitBtn()">
             <table>
                 <tr>
-                    <h2 style="font-family: Palatino;">
+                    <h2>
                         <mat-form-field appearance="fill">
                             <mat-label>Bot set</mat-label>
                             <mat-select formControlName="botSet">
@@ -70,7 +70,7 @@
                     <mat-form-field>
                         <mat-label>Rsi Height Level</mat-label>
                         <input type="number" min="1" matInput placeholder="Rsi Height Level"
-                        formControlName="rsiHeightLevel">
+                            formControlName="rsiHeightLevel">
                         <mat-error *ngIf="form.get('rsiHeightLevel')?.hasError('required')">Rsi Height Level is
                             required</mat-error>
                     </mat-form-field>
@@ -92,8 +92,8 @@
                 <tr *ngIf="isShowSpinner == false" style="text-align: -webkit-center; height: 100px;">
                     <button mat-raised-button type="submit" class="btn btn-primary"
                         style="background-color: #198754; color: white;">Submit</button>
-                    <button mat-raised-button type="submit" class="btn btn-primary"
-                        style="background-color: #0d6efd; color: white;" (click)="onClickResetBtn()">Reset</button>
+                    <button mat-raised-button type="button" class="btn btn-primary"
+                        style="background-color: #0d6efd; color: white;" (click)="initForm()">Reset</button>
                 </tr>
                 <tr style="text-align: -webkit-center; height: 100px;" *ngIf="isShowSpinner">
                     <mat-spinner></mat-spinner>

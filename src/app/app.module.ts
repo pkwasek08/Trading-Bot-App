@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LOCALE_ID } from '@angular/core';
 
 const materialForm = [
   MatButtonModule,
@@ -37,6 +39,7 @@ const materialForm = [
     AppRoutingModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     MatDatepickerModule,
     MatInputModule,
     materialForm,
@@ -53,7 +56,8 @@ const materialForm = [
     BrowserAnimationsModule
   ],
   exports: [materialForm],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pl' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
