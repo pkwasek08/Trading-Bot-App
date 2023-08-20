@@ -1,115 +1,180 @@
 <div style="display: flex;  position: relative; justify-content: center;  align-items: flex-start; height: 100vh;">
-    <div id="newBotPanel" [@slideAnimation]="responseFromBackend ? 'shown' : 'hidden'" [ngClass]="{'slide-left-up-animation': responseFromBackend}" class="start-bot-content" (@slideAnimation.done)="onAnimationDone($event)">
-        <form [formGroup]="form" (ngSubmit)="onClickSubmitBtn()">
-            <table>
-                <tr>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Bot set</mat-label>
-                        <mat-select formControlName="botSet">
-                            <mat-option value="NEW_BOT">NEW_BOT</mat-option>
-                            <!--<mat-option *ngFor="let testSetsInfo of testSetsInfoList" [value]="testSetsInfo.id">
+    <table>
+        <tr>
+            <td style="display: block; height: 400px;">
+                <div id="newBotPanel" [@slideAnimation]="responseFromBackend ? 'shown' : 'hidden'"
+                    [ngClass]="{'slide-left-up-animation': responseFromBackend}" class="start-bot-content"
+                    (@slideAnimation.done)="onAnimationDone($event)">
+                    <form [formGroup]="form" (ngSubmit)="onClickSubmitBtn()">
+                        <table>
+                            <tr>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Bot set</mat-label>
+                                    <mat-select formControlName="botSet">
+                                        <mat-option value="NEW_BOT">NEW_BOT</mat-option>
+                                        <!--<mat-option *ngFor="let testSetsInfo of testSetsInfoList" [value]="testSetsInfo.id">
                                 {{testSetsInfo.testName}}
                             </mat-option>-->
-                        </mat-select>
-                    </mat-form-field>
-                </tr>
-                <tr>
-                    <mat-form-field>
-                        <mat-label>Bot Name</mat-label>
-                        <input type="text" matInput placeholder="Bot name" formControlName="name">
-                        <mat-error *ngIf="form.get('name')?.hasError('required')">Bot name is required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Stock</mat-label>
-                        <mat-select formControlName="stock">
-                            <mat-option *ngFor="let stock of stockList" [value]="stock">
-                                {{stock}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="form.get('stock')?.hasError('required')">Stock is required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Budget</mat-label>
-                        <input type="number" min="1" matInput placeholder="Budget" formControlName="budget">
-                        <mat-error *ngIf="form.get('budget')?.hasError('required')">Budget is required</mat-error>
-                    </mat-form-field>
-                </tr>
-                <tr>
-                    <mat-form-field>
-                        <mat-label>Start date</mat-label>
-                        <input matInput [matDatepicker]="pickerStart" formControlName="startDate">
-                        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
-                        <mat-datepicker #pickerStart></mat-datepicker>
-                        <mat-error *ngIf="form.get('startDate')?.hasError('required')">Start date is
-                            required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>End date</mat-label>
-                        <input matInput [matDatepicker]="pickerEnd" formControlName="endDate">
-                        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
-                        <mat-datepicker #pickerEnd></mat-datepicker>
-                        <mat-error *ngIf="form.get('endDate')?.hasError('required')">Start date is
-                            required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Resample Freq</mat-label>
-                        <mat-select formControlName="resampleFreq">
-                            <mat-option value="30min">30min</mat-option>
-                            <mat-option value="1h">1h</mat-option>
-                            <mat-option value="4h">4h</mat-option>
-                            <mat-option value="1d">1d</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="form.get('resampleFreq')?.hasError('required')">Resample Freq is
-                            required</mat-error>
-                    </mat-form-field>
-                </tr>
-                <tr>
-                    <mat-form-field>
-                        <mat-label>Rsi Height Level</mat-label>
-                        <input type="number" min="1" matInput placeholder="Rsi Height Level"
-                            formControlName="rsiHeightLevel">
-                        <mat-error *ngIf="form.get('rsiHeightLevel')?.hasError('required')">Rsi Height Level is
-                            required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Rsi Low Level</mat-label>
-                        <input type="number" min="1" matInput placeholder="rsiLowLevel" formControlName="rsiLowLevel">
-                        <mat-error *ngIf="form.get('rsiLowLevel')?.hasError('required')">Rsi Low Level is
-                            required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Stop Loss</mat-label>
-                        <input type="number" min="1" matInput placeholder="Stop Loss" formControlName="stopLoss">
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Take Profit</mat-label>
-                        <input type="number" min="1" matInput placeholder="Take Profit" formControlName="takeProfit">
-                    </mat-form-field>
-                </tr>
-                <tr *ngIf="isShowSpinner == false" style="text-align: -webkit-center; height: 100px;">
-                    <button mat-raised-button type="submit" class="btn btn-primary"
-                        style="background-color: #198754; color: white;">Submit</button>
-                    <button mat-raised-button type="button" class="btn btn-primary"
-                        style="background-color: #0d6efd; color: white;" (click)="initForm()">Reset</button>
-                </tr>
-                <tr style="text-align: -webkit-center; height: 100px;" *ngIf="isShowSpinner">
-                    <mat-spinner></mat-spinner>
-                </tr>
-            </table>
-        </form>
-    </div>
-    <div class="start-bot-result-budget" *ngIf="(animationDone$ | async)?.toState === 'shown'">
-        <h2>BUDGET RESULT</h2>
-        <div>
-            <h3><label>BEFORE:</label><label style="margin-left: 10px;">{{newBotResponse.budgetBefore}}$</label></h3>
-        </div>
-        <div>
-            <h3><label>AFTER:</label><label style="margin-left: 10px;">{{newBotResponse.budgetAfter}}$</label></h3>
-        </div>
-        <div>
-            <h3 *ngIf="getFinalResultBudget() > 0"><label>RESULT</label><label style="margin-left: 10px; color: green;">+{{getFinalResultBudget()}}$</label></h3>
-            <h3 *ngIf="getFinalResultBudget() == 0"><label>RESULT</label><label style="margin-left: 10px;">{{getFinalResultBudget()}}$</label></h3>
-            <h3 *ngIf="0 > getFinalResultBudget()"><label>RESULT</label><label style="margin-left: 10px; color: #c52323">-{{getFinalResultBudget()}}$</label></h3>
-        </div>
-    </div>
+                                    </mat-select>
+                                </mat-form-field>
+                            </tr>
+                            <tr>
+                                <mat-form-field>
+                                    <mat-label>Bot Name</mat-label>
+                                    <input type="text" matInput placeholder="Bot name" formControlName="name">
+                                    <mat-error *ngIf="form.get('name')?.hasError('required')">Bot name is
+                                        required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Stock</mat-label>
+                                    <mat-select formControlName="stock">
+                                        <mat-option *ngFor="let stock of stockList" [value]="stock">
+                                            {{stock}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="form.get('stock')?.hasError('required')">Stock is
+                                        required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Budget</mat-label>
+                                    <input type="number" min="1" matInput placeholder="Budget" formControlName="budget">
+                                    <mat-error *ngIf="form.get('budget')?.hasError('required')">Budget is
+                                        required</mat-error>
+                                </mat-form-field>
+                            </tr>
+                            <tr>
+                                <mat-form-field>
+                                    <mat-label>Start date</mat-label>
+                                    <input matInput [matDatepicker]="pickerStart" formControlName="startDate">
+                                    <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerStart></mat-datepicker>
+                                    <mat-error *ngIf="form.get('startDate')?.hasError('required')">Start date is
+                                        required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>End date</mat-label>
+                                    <input matInput [matDatepicker]="pickerEnd" formControlName="endDate">
+                                    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerEnd></mat-datepicker>
+                                    <mat-error *ngIf="form.get('endDate')?.hasError('required')">Start date is
+                                        required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Resample Freq</mat-label>
+                                    <mat-select formControlName="resampleFreq">
+                                        <mat-option value="30min">30min</mat-option>
+                                        <mat-option value="1h">1h</mat-option>
+                                        <mat-option value="4h">4h</mat-option>
+                                        <mat-option value="1d">1d</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="form.get('resampleFreq')?.hasError('required')">Resample Freq is
+                                        required</mat-error>
+                                </mat-form-field>
+                            </tr>
+                            <tr>
+                                <mat-form-field>
+                                    <mat-label>Rsi Height Level</mat-label>
+                                    <input type="number" min="1" matInput placeholder="Rsi Height Level"
+                                        formControlName="rsiHeightLevel">
+                                    <mat-error *ngIf="form.get('rsiHeightLevel')?.hasError('required')">Rsi Height Level
+                                        is
+                                        required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Rsi Low Level</mat-label>
+                                    <input type="number" min="1" matInput placeholder="rsiLowLevel"
+                                        formControlName="rsiLowLevel">
+                                    <mat-error *ngIf="form.get('rsiLowLevel')?.hasError('required')">Rsi Low Level is
+                                        required</mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Stop Loss</mat-label>
+                                    <input type="number" min="1" matInput placeholder="Stop Loss"
+                                        formControlName="stopLoss">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Take Profit</mat-label>
+                                    <input type="number" min="1" matInput placeholder="Take Profit"
+                                        formControlName="takeProfit">
+                                </mat-form-field>
+                            </tr>
+                            <tr *ngIf="isShowSpinner == false" style="text-align: -webkit-center; height: 100px;">
+                                <button mat-raised-button type="submit" class="btn btn-primary"
+                                    style="background-color: #198754; color: white;"
+                                    [disabled]="responseFromBackend">Submit</button>
+                                <button mat-raised-button type="button" class="btn btn-primary"
+                                    style="background-color: #0d6efd; color: white;"
+                                    (click)="onClickRestartBtn()">Reset</button>
+                            </tr>
+                            <tr style="text-align: -webkit-center; height: 100px;" *ngIf="isShowSpinner">
+                                <mat-spinner></mat-spinner>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </td>
+            <td>
+                <div class="start-bot-result-budget" *ngIf="(animationDone$ | async)?.toState === 'shown'">
+                    <h2>BUDGET RESULT</h2>
+                    <div>
+                        <h3><label>BEFORE:</label><label
+                                style="margin-left: 10px;">{{newBotResponse.budgetBefore}}$</label></h3>
+                    </div>
+                    <div>
+                        <h3><label>AFTER:</label><label
+                                style="margin-left: 10px;">{{newBotResponse.budgetAfter}}$</label></h3>
+                    </div>
+                    <div>
+                        <h3 *ngIf="getFinalResultBudget() > 0"><label>RESULT</label><label
+                                style="margin-left: 10px; color: green;">+{{getFinalResultBudget()}}$</label></h3>
+                        <h3 *ngIf="getFinalResultBudget() == 0"><label>RESULT</label><label
+                                style="margin-left: 10px;">{{getFinalResultBudget()}}$</label></h3>
+                        <h3 *ngIf="0 > getFinalResultBudget()"><label>RESULT</label><label
+                                style="margin-left: 10px; color: #c52323">-{{getFinalResultBudget()}}$</label></h3>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr *ngIf="(animationDone$ | async)?.toState === 'shown'">
+            <td colspan="2">
+            <div class="start-bot-content">
+                <table class="table table-striped" style="background: white;">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Date Open</th>
+                            <th scope="col">Date Close</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Open Price</th>
+                            <th scope="col">Close Price</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Profir/Lose</th>
+                            <th scope="col">Stop Loss</th>
+                            <th scope="col">Take Profit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="newBotResponse.tradeList == null || newBotResponse.tradeList.length == 0">
+                            <td colspan="10">No trades</td>
+                        </tr>
+                        <tr *ngFor="let trade of newBotResponse.tradeList;  let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{trade.dateOpen}}</td>
+                            <td>{{trade.dateClose}}</td>
+                            <td style="color: #c52323" *ngIf="trade.type == 'SELL'">{{trade.type}}</td>
+                            <td style="color: green;" *ngIf="trade.type == 'BUY'">{{trade.type}}</td>
+                            <td>{{trade.openPrice}}</td>
+                            <td>{{trade.closePrice}}</td>
+                            <td>{{trade.amount}}</td>
+                            <td style="color: #c52323" *ngIf="0 > trade.profitLose">{{trade.profitLose}}</td>
+                            <td *ngIf="trade.profitLose == 0">{{trade.profitLose}}</td>
+                            <td style="color: green;" *ngIf="trade.profitLose > 0">{{trade.profitLose}}</td>
+                            <td>{{trade.stopLoss}}</td>
+                            <td>{{trade.takeProfit}}</td>
+                        </tr>
+                </table>
+            </div>              
+        </td>
+        </tr>
+    </table>
 </div>

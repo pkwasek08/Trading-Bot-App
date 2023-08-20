@@ -11,12 +11,11 @@ mat-form-field {
 
 .slide-left-up-animation {
     transition: all 1s ease-in-out;
-    transform: translate(calc(-35% + 5vw), calc(-20% + 5vh)) scale(0.7);
+    transform: translate(calc(-35% + 5vw), calc(-20% + 5vh)) scale(calc(1 / 1.25));
 }
 
 .start-bot-content {
-    margin-bottom: 20px;
-    height: max-content;
+    height:  fit-content;
     background: white;
     width: fit-content;
     min-width: fit-content;
@@ -28,7 +27,7 @@ mat-form-field {
 
 .start-bot-result-budget {
     position: absolute;
-    top: 1%;
+    top: 10%;
     right: 13%;
     bottom: 0;
     width: 50%;
@@ -40,6 +39,6 @@ mat-form-field {
     width: fit-content;
     min-width: fit-content;
     padding: 20px;
-    height: max-content;
+    height: fit-content;
     border-radius: 10px;
 }

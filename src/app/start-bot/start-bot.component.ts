@@ -32,7 +32,6 @@ export class StartBotComponent implements OnInit {
   newBotResponse: NewBotResponse = new NewBotResponse;
   stockList: string[] = [];
   responseFromBackend: boolean = false;
-  animationDone = false;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -72,7 +71,21 @@ export class StartBotComponent implements OnInit {
     }
   }
 
-  initForm() {
+  onClickRestartBtn() {
+    this.initForm();
+    this.responseFromBackend = false;
+    this.animationDone$ = new Subject<AnimationEvent>();
+  }
+
+  onAnimationDone(event: AnimationEvent) {
+    this.animationDone$.next(event);
+  }
+
+  getFinalResultBudget() {
+    return Math.round((this.newBotResponse.budgetAfter - this.newBotResponse.budgetBefore) * 100) / 100;
+  }
+
+  private initForm() {
     this.form = this.fb.group({
       botSet: ['NEW_BOT', Validators.required],
       name: ['', Validators.required],
@@ -88,7 +101,6 @@ export class StartBotComponent implements OnInit {
     });
   }
 
-
   private dateValidation(): boolean {
     const startDate = this.form.get('startDate')?.value;
     const endDate = this.form.get('endDate')?.value;
@@ -101,14 +113,5 @@ export class StartBotComponent implements OnInit {
       duration: 5000,
     });
     return false;
-  }
-
-
-  onAnimationDone(event: AnimationEvent) {
-    this.animationDone$.next(event);
-  }
-
-  getFinalResultBudget() {
-    return Math.round((this.newBotResponse.budgetAfter - this.newBotResponse.budgetBefore) * 100) / 100;
   }
 }

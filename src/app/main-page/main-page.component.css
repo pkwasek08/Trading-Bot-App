@@ -32,9 +32,6 @@
 #main {
     padding: 10px;
     transition: 0.5s;
-    /*  -webkit-box-shadow: 0 80px 60px -60px #999;
-      -moz-box-shadow: 0 180px 160px -160px #999;
-      box-shadow: 0 180px 160px -160px #999;*/
 }
 
 @media screen and (max-height: 450px) {
