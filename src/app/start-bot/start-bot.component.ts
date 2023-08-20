@@ -1,19 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { NewBot } from '../models/newBot';
+import { NewBotResponse } from '../models/NewBotResponse';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RsiBotService } from '../services/rsiBot.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Subject } from 'rxjs';
+import { AnimationEvent } from "@angular/animations";
 
 @Component({
   selector: 'app-start-bot',
   templateUrl: './start-bot.component.html',
-  styleUrls: ['./start-bot.component.css']
+  styleUrls: ['./start-bot.component.css'],
+  animations: [
+    trigger('slideAnimation', [
+      state('shown', style({
+        transform: 'translate(calc(-35% + 5vw), calc(-20% + 5vh)) scale(0.7)'
+      })),
+      state('hidden', style({
+        transform: 'translateX(0%)'
+      })),
+      transition('shown => hidden', animate('1s ease-in-out')),
+      transition('hidden => shown', animate('1s ease-in-out'))
+    ])
+  ],
+
 })
 export class StartBotComponent implements OnInit {
-  public isShowSpinner = false;
-  public form!: FormGroup;
-  public newBot: NewBot = new NewBot;
-  public stockList: string[] = [];
+  animationDone$: Subject<AnimationEvent> = new Subject<AnimationEvent>();
+  isShowSpinner = false;
+  form!: FormGroup;
+  newBotResponse: NewBotResponse = new NewBotResponse;
+  stockList: string[] = [];
+  responseFromBackend: boolean = false;
+  animationDone = false;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -30,7 +49,11 @@ export class StartBotComponent implements OnInit {
       console.log('Form submitted successfully');
       this.rsiBotService.startRsiBot(this.form.value).subscribe(
         {
-          next: (v) => console.log(v),
+          next: (v) => {
+            this.newBotResponse = v;
+            this.responseFromBackend = true
+
+          },
           error: (error) => {
             this.snackBar.open(error.status + ' error :(', 'x', {
               panelClass: 'custom-css-class-error',
@@ -80,4 +103,12 @@ export class StartBotComponent implements OnInit {
     return false;
   }
 
+
+  onAnimationDone(event: AnimationEvent) {
+    this.animationDone$.next(event);
+  }
+
+  getFinalResultBudget() {
+    return Math.round((this.newBotResponse.budgetAfter - this.newBotResponse.budgetBefore) * 100) / 100;
+  }
 }

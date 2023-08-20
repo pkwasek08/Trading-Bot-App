@@ -1,6 +1,5 @@
-<div style="display: flex; justify-content: center;">
-    <div id="newTestPanel"
-        style="margin-bottom: 20px; height: max-content; background: white;width: fit-content; min-width: fit-content; padding: 20px; border-radius: 10px; text-align: center; margin-left: 10px;">
+<div style="display: flex;  position: relative; justify-content: center;  align-items: flex-start; height: 100vh;">
+    <div id="newBotPanel" [@slideAnimation]="responseFromBackend ? 'shown' : 'hidden'" [ngClass]="{'slide-left-up-animation': responseFromBackend}" class="start-bot-content" (@slideAnimation.done)="onAnimationDone($event)">
         <form [formGroup]="form" (ngSubmit)="onClickSubmitBtn()">
             <table>
                 <tr>
@@ -98,5 +97,19 @@
                 </tr>
             </table>
         </form>
+    </div>
+    <div class="start-bot-result-budget" *ngIf="(animationDone$ | async)?.toState === 'shown'">
+        <h2>BUDGET RESULT</h2>
+        <div>
+            <h3><label>BEFORE:</label><label style="margin-left: 10px;">{{newBotResponse.budgetBefore}}$</label></h3>
+        </div>
+        <div>
+            <h3><label>AFTER:</label><label style="margin-left: 10px;">{{newBotResponse.budgetAfter}}$</label></h3>
+        </div>
+        <div>
+            <h3 *ngIf="getFinalResultBudget() > 0"><label>RESULT</label><label style="margin-left: 10px; color: green;">+{{getFinalResultBudget()}}$</label></h3>
+            <h3 *ngIf="getFinalResultBudget() == 0"><label>RESULT</label><label style="margin-left: 10px;">{{getFinalResultBudget()}}$</label></h3>
+            <h3 *ngIf="0 > getFinalResultBudget()"><label>RESULT</label><label style="margin-left: 10px; color: #c52323">-{{getFinalResultBudget()}}$</label></h3>
+        </div>
     </div>
 </div>

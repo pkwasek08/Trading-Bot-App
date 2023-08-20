@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { NewBot } from '../models/newBot';
+import { NewBot } from '../models/NewBot';
+import { NewBotResponse } from '../models/NewBotResponse';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs'; // Dodaj import Observable
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,8 +14,18 @@ export class RsiBotService {
 
   constructor(private http: HttpClient) { }
 
-  startRsiBot(bot: NewBot) {
-    return this.http.post(this.apiUrl, bot);
+  startRsiBot(bot: NewBot): Observable<NewBotResponse> {
+    return this.http.post(this.apiUrl, bot).pipe(
+      map((response: any) => {
+        const newBotResponse: NewBotResponse = {
+          parameters: response.result.parameters,
+          budgetBefore: response.result.budgetBefore,
+          budgetAfter: response.result.budgetAfter,
+          tradeList: response.result.tradeList
+        };
+        return newBotResponse;
+      })
+    );
   }
 
 }

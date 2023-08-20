@@ -8,3 +8,38 @@ mat-form-field {
     font-size: 20px;
     padding: 25px;
 }
+
+.slide-left-up-animation {
+    transition: all 1s ease-in-out;
+    transform: translate(calc(-35% + 5vw), calc(-20% + 5vh)) scale(0.7);
+}
+
+.start-bot-content {
+    margin-bottom: 20px;
+    height: max-content;
+    background: white;
+    width: fit-content;
+    min-width: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.start-bot-result-budget {
+    position: absolute;
+    top: 1%;
+    right: 13%;
+    bottom: 0;
+    width: 50%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: fit-content;
+    min-width: fit-content;
+    padding: 20px;
+    height: max-content;
+    border-radius: 10px;
+}
