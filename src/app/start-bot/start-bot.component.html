@@ -1,7 +1,7 @@
 <div style="display: flex;  position: relative; justify-content: center;  align-items: flex-start; height: 100vh;">
     <table>
         <tr>
-            <td style="display: block; height: 400px;">
+            <td style="display: block; height: 350px;">
                 <div id="newBotPanel" [@slideAnimation]="responseFromBackend ? 'shown' : 'hidden'"
                     [ngClass]="{'slide-left-up-animation': responseFromBackend}" class="start-bot-content"
                     (@slideAnimation.done)="onAnimationDone($event)">
@@ -98,7 +98,7 @@
                                         formControlName="takeProfit">
                                 </mat-form-field>
                             </tr>
-                            <tr *ngIf="isShowSpinner == false" style="text-align: -webkit-center; height: 100px;">
+                            <tr *ngIf="isShowSpinner == false" style="text-align: -webkit-center; ">
                                 <button mat-raised-button type="submit" class="btn btn-primary"
                                     style="background-color: #198754; color: white;"
                                     [disabled]="responseFromBackend">Submit</button>
@@ -106,7 +106,7 @@
                                     style="background-color: #0d6efd; color: white;"
                                     (click)="onClickRestartBtn()">Reset</button>
                             </tr>
-                            <tr style="text-align: -webkit-center; height: 100px;" *ngIf="isShowSpinner">
+                            <tr style="text-align: -webkit-center; " *ngIf="isShowSpinner">
                                 <mat-spinner></mat-spinner>
                             </tr>
                         </table>
@@ -117,11 +117,11 @@
                 <div class="start-bot-result-budget" *ngIf="(animationDone$ | async)?.toState === 'shown'">
                     <h2>BUDGET RESULT</h2>
                     <div>
-                        <h3><label>BEFORE:</label><label
+                        <h3><label>BEFORE</label><label
                                 style="margin-left: 10px;">{{newBotResponse.budgetBefore}}$</label></h3>
                     </div>
                     <div>
-                        <h3><label>AFTER:</label><label
+                        <h3><label>AFTER</label><label
                                 style="margin-left: 10px;">{{newBotResponse.budgetAfter}}$</label></h3>
                     </div>
                     <div>
@@ -132,49 +132,55 @@
                         <h3 *ngIf="0 > getFinalResultBudget()"><label>RESULT</label><label
                                 style="margin-left: 10px; color: #c52323">-{{getFinalResultBudget()}}$</label></h3>
                     </div>
+                    <div style="width: 100%;">
+                        <button mat-raised-button type="button" class="btn btn-primary" [disabled]="newBotResponse.tradeList == null || newBotResponse.tradeList.length == 0"
+                            style="background-color: rgb(76, 76, 76); color: white; font-size: 13px; width: 100%; margin: 0px; padding: 5px;" (click)="openDialog()">Check
+                            budget chart</button>
+                    </div>
                 </div>
             </td>
         </tr>
         <tr *ngIf="(animationDone$ | async)?.toState === 'shown'">
             <td colspan="2">
-            <div class="start-bot-content">
-                <table class="table table-striped" style="background: white;">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Date Open</th>
-                            <th scope="col">Date Close</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Open Price</th>
-                            <th scope="col">Close Price</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Profir/Lose</th>
-                            <th scope="col">Stop Loss</th>
-                            <th scope="col">Take Profit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngIf="newBotResponse.tradeList == null || newBotResponse.tradeList.length == 0">
-                            <td colspan="10">No trades</td>
-                        </tr>
-                        <tr *ngFor="let trade of newBotResponse.tradeList;  let i = index">
-                            <td>{{ i + 1 }}</td>
-                            <td>{{trade.dateOpen}}</td>
-                            <td>{{trade.dateClose}}</td>
-                            <td style="color: #c52323" *ngIf="trade.type == 'SELL'">{{trade.type}}</td>
-                            <td style="color: green;" *ngIf="trade.type == 'BUY'">{{trade.type}}</td>
-                            <td>{{trade.openPrice}}</td>
-                            <td>{{trade.closePrice}}</td>
-                            <td>{{trade.amount}}</td>
-                            <td style="color: #c52323" *ngIf="0 > trade.profitLose">{{trade.profitLose}}</td>
-                            <td *ngIf="trade.profitLose == 0">{{trade.profitLose}}</td>
-                            <td style="color: green;" *ngIf="trade.profitLose > 0">{{trade.profitLose}}</td>
-                            <td>{{trade.stopLoss}}</td>
-                            <td>{{trade.takeProfit}}</td>
-                        </tr>
-                </table>
-            </div>              
-        </td>
+                <div class="start-bot-content">
+                    <h2>Trades List</h2>
+                    <table class="table table-striped" style="background: white;">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Date Open</th>
+                                <th scope="col">Date Close</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Open Price</th>
+                                <th scope="col">Close Price</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Profir/Lose</th>
+                                <th scope="col">Stop Loss</th>
+                                <th scope="col">Take Profit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="newBotResponse.tradeList == null || newBotResponse.tradeList.length == 0">
+                                <td colspan="10">No trades</td>
+                            </tr>
+                            <tr *ngFor="let trade of newBotResponse.tradeList;  let i = index">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{trade.dateOpen}}</td>
+                                <td>{{trade.dateClose}}</td>
+                                <td style="color: #c52323" *ngIf="trade.type == 'SELL'">{{trade.type}}</td>
+                                <td style="color: green;" *ngIf="trade.type == 'BUY'">{{trade.type}}</td>
+                                <td>{{trade.openPrice}}</td>
+                                <td>{{trade.closePrice}}</td>
+                                <td>{{trade.amount}}</td>
+                                <td style="color: #c52323" *ngIf="0 > trade.profitLose">{{trade.profitLose}}</td>
+                                <td *ngIf="trade.profitLose == 0">{{trade.profitLose}}</td>
+                                <td style="color: green;" *ngIf="trade.profitLose > 0">{{trade.profitLose}}</td>
+                                <td>{{trade.stopLoss}}</td>
+                                <td>{{trade.takeProfit}}</td>
+                            </tr>
+                    </table>
+                </div>
+            </td>
         </tr>
     </table>
 </div>

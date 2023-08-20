@@ -19,6 +19,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LOCALE_ID } from '@angular/core';
+import { ChartBudgetComponent } from './chart-budget/chart-budget.component';
+import { NgChartsModule } from 'ng2-charts';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const materialForm = [
   MatButtonModule,
@@ -32,13 +35,15 @@ const materialForm = [
     MainPageComponent,
     StockBarComponent,
     ChartWidgetComponent,
-    StartBotComponent
+    StartBotComponent,
+    ChartBudgetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    MatDialogModule,
     MatSnackBarModule,
     MatDatepickerModule,
     MatInputModule,
@@ -53,7 +58,8 @@ const materialForm = [
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgChartsModule
   ],
   exports: [materialForm],
   providers: [

@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Subject } from 'rxjs';
 import { AnimationEvent } from "@angular/animations";
+import { MatDialog } from '@angular/material/dialog';
+import { ChartBudgetComponent } from '../chart-budget/chart-budget.component';
 
 @Component({
   selector: 'app-start-bot',
@@ -35,6 +37,7 @@ export class StartBotComponent implements OnInit {
 
   constructor(
     private snackBar: MatSnackBar,
+    private dialog: MatDialog,
     private fb: FormBuilder,
     private rsiBotService: RsiBotService) {
     this.initForm();
@@ -83,6 +86,16 @@ export class StartBotComponent implements OnInit {
 
   getFinalResultBudget() {
     return Math.round((this.newBotResponse.budgetAfter - this.newBotResponse.budgetBefore) * 100) / 100;
+  }
+
+  openDialog(): void {
+    this.dialog.open(ChartBudgetComponent, {
+      width: '700px',
+      data: {
+        tradeList: this.newBotResponse.tradeList,
+        budget: this.newBotResponse.budgetBefore
+      },
+    });
   }
 
   private initForm() {
