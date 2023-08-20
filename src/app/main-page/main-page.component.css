@@ -30,7 +30,7 @@
 }
 
 #main {
-    padding: 20px;
+    padding: 10px;
     transition: 0.5s;
     /*  -webkit-box-shadow: 0 80px 60px -60px #999;
       -moz-box-shadow: 0 180px 160px -160px #999;
@@ -91,15 +91,17 @@ body {
 
 .navbar-brand {
     padding: 110 15px;
-    height: 40px;
-    line-height: 40px;
-    font-size: 50px;
-    margin-bottom: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
 .nav-link {
-    font-size: 25px;
+    font-size: 20px;
     padding: 0 !important;
+    font-family: Palatino;
+    margin-left: 20px
 }
 
 .navbar-toggle {

@@ -4,17 +4,15 @@
         <form [formGroup]="form" (ngSubmit)="onClickSubmitBtn()">
             <table>
                 <tr>
-                    <h2>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Bot set</mat-label>
-                            <mat-select formControlName="botSet">
-                                <mat-option value="NEW_BOT">NEW_BOT</mat-option>
-                                <!--<mat-option *ngFor="let testSetsInfo of testSetsInfoList" [value]="testSetsInfo.id">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Bot set</mat-label>
+                        <mat-select formControlName="botSet">
+                            <mat-option value="NEW_BOT">NEW_BOT</mat-option>
+                            <!--<mat-option *ngFor="let testSetsInfo of testSetsInfoList" [value]="testSetsInfo.id">
                                 {{testSetsInfo.testName}}
                             </mat-option>-->
-                            </mat-select>
-                        </mat-form-field>
-                    </h2>
+                        </mat-select>
+                    </mat-form-field>
                 </tr>
                 <tr>
                     <mat-form-field>
