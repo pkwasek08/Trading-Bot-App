@@ -47,3 +47,22 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.main-div-content {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+.start-bot-content {
+    height:  fit-content;
+    background: white;
+    width: fit-content;
+    min-width: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 10px;
+}

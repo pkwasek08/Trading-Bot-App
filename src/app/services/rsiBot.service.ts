@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { NewBot } from '../models/NewBot';
 import { NewBotResponse } from '../models/NewBotResponse';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs'; // Dodaj import Observable
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

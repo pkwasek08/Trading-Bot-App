@@ -9,10 +9,17 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
 server.post('/bot/startRsiBot', (req, res) => {
-    const responseFilePath = path.join(__dirname, 'src/assets/startRsiBotResponse.json');
-    const responseData = require(responseFilePath);
+  const responseFilePath = path.join(__dirname, 'src/assets/startRsiBotResponse.json');
+  const responseData = require(responseFilePath);
   res.jsonp(responseData);
 });
+
+server.get('/bot', (req, res) => {
+  const responseFilePath = path.join(__dirname, 'src/assets/botsHistory.json');
+  const responseData = require(responseFilePath);
+  res.jsonp(responseData);
+});
+
 
 server.use(router);
 

@@ -1,0 +1,50 @@
+<div class="main-div-content">
+    <div style="text-align: -webkit-center; " *ngIf="isShowSpinner">
+        <mat-spinner style="margin-top: 30px;" [diameter]="200"></mat-spinner>
+    </div>
+    <div class="start-bot-content" *ngIf="!isShowSpinner">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Create Date</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Budget</th>
+                    <th scope="col">Result</th>
+                    <th scope="col">Freq</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Parameters</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="botsDetailsList == null || botsDetailsList.length == 0">
+                    <td colspan="10">No Data</td>
+                </tr>
+                <tr *ngFor="let bot of botsDetailsList" style="vertical-align: middle;">
+                    <td>{{bot.name}}</td>
+                    <td>{{bot.createDate| date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+                    <td>{{bot.pairStock}}</td>
+                    <td>{{bot.budget}}$</td>
+                    <td style="color: #c52323" *ngIf="0 > bot.resultValue"><b>{{bot.resultValue}}$</b></td>
+                    <td *ngIf="bot.resultValue == 0"><b>{{bot.resultValue}}$</b></td>
+                    <td style="color: green;" *ngIf="bot.resultValue > 0"><b>{{bot.resultValue}}$</b></td>
+                    <td>{{bot.resampleFreq}}</td>
+                    <td>{{bot.startDate| date: 'dd.MM.yyyy'}}</td>
+                    <td>{{bot.endDate| date: 'dd.MM.yyyy'}}</td>
+                    <td style="text-align: left;">
+                        <ul class="dots-list">
+                            <li class="dot">RSI Height Level: {{parseParameters(bot.parameters).rsiHeightLevel}}</li>
+                            <li class="dot">RSI Low Level: {{parseParameters(bot.parameters).rsiLowLevel}}</li>
+                            <li class="dot">Stop Loss: {{parseParameters(bot.parameters).stopLoss}}</li>
+                            <li class="dot">Take Profit: {{parseParameters(bot.parameters).takeProfit}}</li>
+                        </ul>
+                    </td>
+                    <td> <button type="button" class="btn btn-primary">Details</button>
+                        <button type="button" class="btn btn-danger">Remove</button>
+                    </td>
+                </tr>
+        </table>
+    </div>
+</div>

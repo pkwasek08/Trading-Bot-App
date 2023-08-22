@@ -14,17 +14,6 @@ mat-form-field {
     transform: translate(calc(-35% + 5vw), calc(-20% + 5vh)) scale(calc(1 / 1.25));
 }
 
-.start-bot-content {
-    height:  fit-content;
-    background: white;
-    width: fit-content;
-    min-width: fit-content;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin-left: 10px;
-}
-
 .start-bot-result-budget {
     position: absolute;
     top: 7%;

@@ -22,6 +22,8 @@ import { LOCALE_ID } from '@angular/core';
 import { ChartBudgetComponent } from './chart-budget/chart-budget.component';
 import { NgChartsModule } from 'ng2-charts';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BotsHistoryComponent } from './bots-history/bots-history.component';
+import '@angular/common/locales/global/pl';
 
 const materialForm = [
   MatButtonModule,
@@ -36,7 +38,8 @@ const materialForm = [
     StockBarComponent,
     ChartWidgetComponent,
     StartBotComponent,
-    ChartBudgetComponent
+    ChartBudgetComponent,
+    BotsHistoryComponent
   ],
   imports: [
     BrowserModule,
