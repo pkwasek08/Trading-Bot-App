@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class BotsHistoryComponent implements OnInit {
   botsDetailsList: BotDetails[] = [];
   isShowSpinner: boolean = false;
+  deleteBotId: any;
   constructor(
     private botsService: BotService,
     private snackBar: MatSnackBar,) { }
@@ -37,5 +38,38 @@ export class BotsHistoryComponent implements OnInit {
 
   parseParameters(parameters: string): any {
     return JSON.parse(parameters);
+  }
+
+  onClickRemoveBot(id: number) {
+    this.deleteBotId = id;
+    this.botsService.removeBot(id).subscribe({
+      next: (v) => {
+        if (v === true) {
+          this.snackBar.open('The BOT has been removed', 'x', {
+            panelClass: 'custom-css-class-success',
+            duration: 5000,
+          });
+          const indexToRemove = this.botsDetailsList.findIndex(item => item.id === id);
+          if (indexToRemove !== -1) {
+            this.botsDetailsList.splice(indexToRemove, 1);
+          }
+        } else {
+          this.snackBar.open('Something went wrong :(', 'x', {
+            panelClass: 'custom-css-class-error',
+            duration: 5000,
+          });
+        }
+      },
+      error: (error) => {
+        this.snackBar.open(error.status + ' error :(', 'x', {
+          panelClass: 'custom-css-class-error',
+          duration: 5000,
+        });
+        this.deleteBotId = null;
+      },
+      complete: () => {
+        this.deleteBotId = null;
+      }
+    })
   }
 }

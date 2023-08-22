@@ -16,4 +16,7 @@ export class BotService {
     return this.http.get<BotDetails[]>(this.apiUrl);
   }
 
+  removeBot(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(this.apiUrl, { body: id });
+  }
 }

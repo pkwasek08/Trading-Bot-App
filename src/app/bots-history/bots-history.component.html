@@ -41,9 +41,10 @@
                             <li class="dot">Take Profit: {{parseParameters(bot.parameters).takeProfit}}</li>
                         </ul>
                     </td>
-                    <td> <button type="button" class="btn btn-primary">Details</button>
-                        <button type="button" class="btn btn-danger">Remove</button>
+                    <td *ngIf="deleteBotId !== bot.id"> <button type="button" class="btn btn-primary">Details</button>
+                        <button type="button" class="btn btn-danger" (click)="onClickRemoveBot(bot.id)">Remove</button>
                     </td>
+                    <td *ngIf="deleteBotId === bot.id"><mat-spinner></mat-spinner></td>
                 </tr>
         </table>
     </div>
