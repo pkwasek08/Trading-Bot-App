@@ -1,0 +1,75 @@
+<div class="main-div-content">
+    <div style="text-align: -webkit-center; " *ngIf="!botDetails">
+        <mat-spinner style="margin-top: 30px;" [diameter]="200"></mat-spinner>
+    </div>
+    <div *ngIf="botDetails">
+        <div class="start-bot-content" style="display: flex;">
+            <table class="table" style="height: min-content;">
+                <tbody>
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td>{{botDetails.name}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Create Date</b></td>
+                        <td>{{botDetails.createDate | date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Stock</b></td>
+                        <td>{{botDetails.pairStock}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Budget</b></td>
+                        <td>{{botDetails.budget}}$</td>
+                    </tr>
+                    <tr>
+                        <td><b>Result</b></td>
+                        <td style="color: #c52323" *ngIf="0 > botDetails.resultValue">
+                            <b>{{botDetails.resultValue}}$<br>[{{botDetails.resultValue-botDetails.budget |
+                                number:'1.2-2'}}]</b>
+                        </td>
+                        <td *ngIf="botDetails.resultValue == 0"><b>{{botDetails.resultValue}}$</b></td>
+                        <td style="color: green;" *ngIf="botDetails.resultValue > 0">
+                            <b>{{botDetails.resultValue}}$<br>[{{botDetails.resultValue-botDetails.budget |
+                                number:'1.2-2'}}]</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Freq</b></td>
+                        <td>{{botDetails.resampleFreq}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Start Date</b></td>
+                        <td>{{botDetails.startDate | date: 'dd.MM.yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>End Date</b></td>
+                        <td>{{botDetails.endDate | date: 'dd.MM.yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>RSI Height Level</b></td>
+                        <td>{{parseParameters(botDetails.parameters).rsiHeightLevel}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>RSI Low Level</b></td>
+                        <td>{{parseParameters(botDetails.parameters).rsiLowLevel}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Take Profit</b></td>
+                        <td>{{parseParameters(botDetails.parameters).takeProfit}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Stop Loss</b></td>
+                        <td>{{parseParameters(botDetails.parameters).stopLoss}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-trades-list [tradeList]="botDetails.tradeList" style="margin-left: 60px;"></app-trades-list>
+        </div>
+        <div class="start-bot-content" style="margin-top: 20px; display: flex; width: inherit;">
+            <app-chart-widget [stockPair]="botDetails.pairStock"
+                [interval]="botDetails.resampleFreq" style="width: 48%;"></app-chart-widget>
+            <app-chart-budget [tradeList]="botDetails.tradeList" [budget]="botDetails.budget" style="margin-left: 60px; width: 48%;"></app-chart-budget>
+        </div>
+    </div>
+</div>

@@ -41,7 +41,7 @@ export class StartBotComponent implements OnInit {
     private fb: FormBuilder,
     private rsiBotService: RsiBotService) {
     this.initForm();
-    this.stockList = ["TSLA", "AAPL", "GOOGL", "BTC"];
+    this.stockList = ["TSLA", "AAPL", "GOOGL"];
   }
   ngOnInit(): void { }
 
@@ -89,13 +89,10 @@ export class StartBotComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialog.open(ChartBudgetComponent, {
-      width: '700px',
-      data: {
-        tradeList: this.newBotResponse.tradeList,
-        budget: this.newBotResponse.budgetBefore
-      },
-    });
+    let dialogRef = this.dialog.open(ChartBudgetComponent, { width: '700px' });
+    let instance = dialogRef.componentInstance;
+    instance.budget = this.newBotResponse.budgetBefore;
+    instance.tradeList = this.newBotResponse.tradeList;
   }
 
   private initForm() {

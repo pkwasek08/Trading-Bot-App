@@ -24,15 +24,19 @@
                 </tr>
                 <tr *ngFor="let bot of botsDetailsList" style="vertical-align: middle;">
                     <td>{{bot.name}}</td>
-                    <td>{{bot.createDate| date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+                    <td>{{bot.createDate | date: 'dd.MM.yyyy HH:mm:ss'}}</td>
                     <td>{{bot.pairStock}}</td>
                     <td>{{bot.budget}}$</td>
-                    <td style="color: #c52323" *ngIf="0 > bot.resultValue"><b>{{bot.resultValue}}$</b></td>
+                    <td style="color: #c52323" *ngIf="0 > bot.resultValue">
+                        <b>{{bot.resultValue}}$<br>[{{bot.resultValue-bot.budget | number:'1.2-2'}}]</b>
+                    </td>
                     <td *ngIf="bot.resultValue == 0"><b>{{bot.resultValue}}$</b></td>
-                    <td style="color: green;" *ngIf="bot.resultValue > 0"><b>{{bot.resultValue}}$</b></td>
+                    <td style="color: green;" *ngIf="bot.resultValue > 0">
+                        <b>{{bot.resultValue}}$<br>[{{bot.resultValue-bot.budget | number:'1.2-2'}}]</b>
+                    </td>
                     <td>{{bot.resampleFreq}}</td>
-                    <td>{{bot.startDate| date: 'dd.MM.yyyy'}}</td>
-                    <td>{{bot.endDate| date: 'dd.MM.yyyy'}}</td>
+                    <td>{{bot.startDate | date: 'dd.MM.yyyy'}}</td>
+                    <td>{{bot.endDate | date: 'dd.MM.yyyy'}}</td>
                     <td style="text-align: left;">
                         <ul class="dots-list">
                             <li class="dot">RSI Height Level: {{parseParameters(bot.parameters).rsiHeightLevel}}</li>
@@ -41,7 +45,8 @@
                             <li class="dot">Take Profit: {{parseParameters(bot.parameters).takeProfit}}</li>
                         </ul>
                     </td>
-                    <td *ngIf="deleteBotId !== bot.id"> <button type="button" class="btn btn-primary">Details</button>
+                    <td *ngIf="deleteBotId !== bot.id">
+                        <button type="button" class="btn btn-primary" (click)="openBotDetails(bot)">Details</button>
                         <button type="button" class="btn btn-danger" (click)="onClickRemoveBot(bot.id)">Remove</button>
                     </td>
                     <td *ngIf="deleteBotId === bot.id"><mat-spinner></mat-spinner></td>

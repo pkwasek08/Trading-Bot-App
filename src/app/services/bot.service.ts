@@ -8,7 +8,8 @@ import { BotDetails } from '../models/BotDetails';
   providedIn: 'root'
 })
 export class BotService {
-  apiUrl = environment.apiUrl + 'bot';
+  public botDetails? : BotDetails;
+  private apiUrl = environment.apiUrl + 'bot';
 
   constructor(private http: HttpClient) { }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BotDetails } from '../models/BotDetails';
 import { BotService } from '../services/bot.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bots-history',
@@ -14,7 +15,8 @@ export class BotsHistoryComponent implements OnInit {
   deleteBotId: any;
   constructor(
     private botsService: BotService,
-    private snackBar: MatSnackBar,) { }
+    private snackBar: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.isShowSpinner = true;
@@ -71,5 +73,10 @@ export class BotsHistoryComponent implements OnInit {
         this.deleteBotId = null;
       }
     })
+  }
+
+  openBotDetails(botDetails: BotDetails) {
+    this.botsService.botDetails = botDetails;
+    this.router.navigate(['/botDetails']);
   }
 }

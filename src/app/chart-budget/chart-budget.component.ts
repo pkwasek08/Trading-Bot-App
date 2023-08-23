@@ -10,7 +10,9 @@ import { format, parseISO } from 'date-fns';
   styleUrls: ['./chart-budget.component.css']
 })
 export class ChartBudgetComponent implements OnInit {
+  @Input({ required: true })
   public tradeList: Trade[] = [];
+  @Input({ required: true })
   public budget: number = 0;
   public lineChartData: ChartDataset[] = [
     { data: [], label: 'Price' }
@@ -21,11 +23,9 @@ export class ChartBudgetComponent implements OnInit {
     responsive: true,
   };
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { tradeList: any[], budget: number }) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.tradeList = this.data.tradeList;
-    this.budget = this.data.budget;
     if (this.tradeList && this.tradeList.length > 0) {
       this.lineChartData = [
         {

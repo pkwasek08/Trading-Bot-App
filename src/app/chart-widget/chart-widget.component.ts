@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 declare var TradingView: any; // Dodaj deklarację dla obiektu TradingView
 
@@ -8,17 +8,28 @@ declare var TradingView: any; // Dodaj deklarację dla obiektu TradingView
   styleUrls: ['./chart-widget.component.css']
 })
 export class ChartWidgetComponent implements OnInit {
+  @Input()
+  stockPair?: string
+  @Input()
+  interval?: string
+
   constructor() { }
 
   ngOnInit() {
+    if (!this.stockPair) {
+      this.stockPair = 'AAPL'
+    }
+    if (!this.interval) {
+      this.interval = 'D'
+    }
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = 'https://s3.tradingview.com/tv.js';
     script.onload = () => {
       new TradingView.widget({
         autosize: true,
-        symbol: 'NASDAQ:AAPL',
-        interval: 'D',
+        symbol: 'NASDAQ:' + this.stockPair,
+        interval: this.interval,
         timezone: 'Etc/UTC',
         theme: 'light',
         style: '1',

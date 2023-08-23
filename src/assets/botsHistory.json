@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "name": "TEST1",
         "startDate": "2023-02-02T00:00:00",
         "endDate": "2023-03-02T00:00:00",
@@ -15,7 +16,7 @@
             {
                 "openPrice": 211.04,
                 "closePrice": 189.95,
-                "amount": null,
+                "amount": 2,
                 "profitLose": 21.09,
                 "dateOpen": "2023-02-09T15:30:00",
                 "dateClose": "2023-02-13T15:00:00",
@@ -27,7 +28,7 @@
             {
                 "openPrice": 211.90,
                 "closePrice": 191.86,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 20.05,
                 "dateOpen": "2023-02-09T16:00:00",
                 "dateClose": "2023-02-14T14:30:00",
@@ -207,6 +208,7 @@
         ]
     },
     {
+        "id": 2,
         "name": "TEST2",
         "startDate": "2023-02-02T00:00:00",
         "endDate": "2023-03-02T00:00:00",
@@ -366,6 +368,7 @@
         ]
     },
     {
+        "id": 3,
         "name": "TEST3",
         "startDate": "2023-02-02T00:00:00",
         "endDate": "2023-03-02T00:00:00",

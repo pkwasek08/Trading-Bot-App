@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChartWidgetComponent } from './chart-widget/chart-widget.component';
 import { StartBotComponent } from './start-bot/start-bot.component';
 import { BotsHistoryComponent } from './bots-history/bots-history.component';
+import { BotDetailsComponent } from './bot-details/bot-details.component';
 
 const routes: Routes = [
   { path: 'chart', component: ChartWidgetComponent },
   { path: 'bot', component: StartBotComponent },
-  { path: 'history', component: BotsHistoryComponent }
+  { path: 'history', component: BotsHistoryComponent },
+  { path: 'botDetails', component: BotDetailsComponent}
 ];
 
 @NgModule({

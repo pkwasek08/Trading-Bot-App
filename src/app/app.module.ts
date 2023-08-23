@@ -24,6 +24,11 @@ import { NgChartsModule } from 'ng2-charts';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BotsHistoryComponent } from './bots-history/bots-history.component';
 import '@angular/common/locales/global/pl';
+import { BotDetailsComponent } from './bot-details/bot-details.component';
+import { TradesListComponent } from './trades-list/trades-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 const materialForm = [
   MatButtonModule,
@@ -39,7 +44,9 @@ const materialForm = [
     ChartWidgetComponent,
     StartBotComponent,
     ChartBudgetComponent,
-    BotsHistoryComponent
+    BotsHistoryComponent,
+    BotDetailsComponent,
+    TradesListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,8 +58,11 @@ const materialForm = [
     MatDatepickerModule,
     MatInputModule,
     materialForm,
+    MatPaginatorModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatTableModule,
+    MatSortModule,
     MatProgressSpinnerModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
