@@ -70,6 +70,12 @@
                                     <mat-error *ngIf="form.get('resampleFreq')?.hasError('required')">Resample Freq is
                                         required</mat-error>
                                 </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Amount</mat-label>
+                                    <input type="number" min="1" matInput placeholder="Amount of stock" formControlName="amount">
+                                    <mat-error *ngIf="form.get('amount')?.hasError('required')">Amount is
+                                        required</mat-error>
+                                </mat-form-field>
                             </tr>
                             <tr>
                                 <mat-form-field>

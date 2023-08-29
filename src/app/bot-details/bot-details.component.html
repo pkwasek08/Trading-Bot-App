@@ -47,6 +47,10 @@
                         <td>{{botDetails.endDate | date: 'dd.MM.yyyy'}}</td>
                     </tr>
                     <tr>
+                        <td><b>Amount of stock</b></td>
+                        <td>{{parseParameters(botDetails.parameters).amount}}</td>
+                    </tr>
+                    <tr>
                         <td><b>RSI Height Level</b></td>
                         <td>{{parseParameters(botDetails.parameters).rsiHeightLevel}}</td>
                     </tr>

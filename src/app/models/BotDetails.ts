@@ -10,6 +10,7 @@ export class BotDetails{
     budget!: number;
     resultValue!: number;
     parameters!: string;
+    amount!: number;
     resampleFreq!: string;
     tradeList!: Trade[];
 }

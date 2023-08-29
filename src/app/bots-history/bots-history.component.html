@@ -39,6 +39,7 @@
                     <td>{{bot.endDate | date: 'dd.MM.yyyy'}}</td>
                     <td style="text-align: left;">
                         <ul class="dots-list">
+                            <li class="dot">Amount: {{parseParameters(bot.parameters).amount}}</li>
                             <li class="dot">RSI Height Level: {{parseParameters(bot.parameters).rsiHeightLevel}}</li>
                             <li class="dot">RSI Low Level: {{parseParameters(bot.parameters).rsiLowLevel}}</li>
                             <li class="dot">Stop Loss: {{parseParameters(bot.parameters).stopLoss}}</li>

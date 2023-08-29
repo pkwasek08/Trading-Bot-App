@@ -16,7 +16,7 @@ import { ChartBudgetComponent } from '../chart-budget/chart-budget.component';
   animations: [
     trigger('slideAnimation', [
       state('shown', style({
-        transform: 'translate(calc(-35% + 5vw), calc(-20% + 5vh)) scale(0.7)'
+        transform: 'translate(calc(-25% + 5vw), calc(-20% + 5vh)) scale(0.7)'
       })),
       state('hidden', style({
         transform: 'translateX(0%)'
@@ -108,6 +108,7 @@ export class StartBotComponent implements OnInit {
       rsiLowLevel: ['', Validators.required],
       stopLoss: [''],
       takeProfit: [''],
+      amount: ['', Validators.required]
     });
   }
 

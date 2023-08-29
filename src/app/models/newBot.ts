@@ -8,4 +8,5 @@ export class NewBot {
     rsiLowLevel!: number;
     stopLoss!: number;
     takeProfit!: number;
+    amount!: number;
 }

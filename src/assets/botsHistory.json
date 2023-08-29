@@ -12,11 +12,12 @@
         "createDate": "2023-08-06T13:09:19.543609",
         "pairStock": "TSLA",
         "resampleFreq": "30min",
+        "amount": 10,
         "tradeList": [
             {
                 "openPrice": 211.04,
                 "closePrice": 189.95,
-                "amount": 2,
+                "amount": 10,
                 "profitLose": 21.09,
                 "dateOpen": "2023-02-09T15:30:00",
                 "dateClose": "2023-02-13T15:00:00",
@@ -40,7 +41,7 @@
             {
                 "openPrice": 211.06,
                 "closePrice": 186.67,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 24.39,
                 "dateOpen": "2023-02-09T17:00:00",
                 "dateClose": "2023-03-02T14:30:00",
@@ -52,7 +53,7 @@
             {
                 "openPrice": 212.82,
                 "closePrice": 191.90,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 20.92,
                 "dateOpen": "2023-02-09T17:30:00",
                 "dateClose": "2023-02-13T15:30:00",
@@ -64,7 +65,7 @@
             {
                 "openPrice": 212.21,
                 "closePrice": 190.99,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 21.22,
                 "dateOpen": "2023-02-09T18:00:00",
                 "dateClose": "2023-03-02T15:00:00",
@@ -76,7 +77,7 @@
             {
                 "openPrice": 196.27,
                 "closePrice": 216.86,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 20.59,
                 "dateOpen": "2023-02-10T17:00:00",
                 "dateClose": "2023-02-16T16:00:00",
@@ -88,7 +89,7 @@
             {
                 "openPrice": 193.80,
                 "closePrice": 214.95,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 21.15,
                 "dateOpen": "2023-02-10T17:30:00",
                 "dateClose": "2023-02-16T15:30:00",
@@ -100,7 +101,7 @@
             {
                 "openPrice": 195.58,
                 "closePrice": 216.23,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 20.65,
                 "dateOpen": "2023-02-10T18:00:00",
                 "dateClose": "2023-02-16T16:30:00",
@@ -112,7 +113,7 @@
             {
                 "openPrice": 195.22,
                 "closePrice": 215.74,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 20.52,
                 "dateOpen": "2023-02-10T19:00:00",
                 "dateClose": "2023-02-16T17:30:00",
@@ -124,7 +125,7 @@
             {
                 "openPrice": 189.95,
                 "closePrice": 211.78,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 21.83,
                 "dateOpen": "2023-02-13T15:00:00",
                 "dateClose": "2023-02-15T14:30:00",
@@ -136,7 +137,7 @@
             {
                 "openPrice": 211.78,
                 "closePrice": 191.29,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 20.49,
                 "dateOpen": "2023-02-15T14:30:00",
                 "dateClose": "2023-03-02T15:30:00",
@@ -148,7 +149,7 @@
             {
                 "openPrice": 210.01,
                 "closePrice": 188.57,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 21.44,
                 "dateOpen": "2023-02-15T15:30:00",
                 "dateClose": "2023-03-02T16:30:00",
@@ -160,7 +161,7 @@
             {
                 "openPrice": 210.08,
                 "closePrice": 188.87,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 21.21,
                 "dateOpen": "2023-02-15T16:00:00",
                 "dateClose": "2023-03-02T17:00:00",
@@ -172,7 +173,7 @@
             {
                 "openPrice": 212.94,
                 "closePrice": 191.43,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 21.51,
                 "dateOpen": "2023-02-15T16:30:00",
                 "dateClose": "2023-03-02T16:00:00",
@@ -184,7 +185,7 @@
             {
                 "openPrice": 213.37,
                 "closePrice": 193.33,
-                "amount": null,
+                "amount": 10,
                 "profitLose": 20.04,
                 "dateOpen": "2023-02-15T17:00:00",
                 "dateClose": "2023-02-22T15:30:00",
@@ -196,7 +197,7 @@
             {
                 "openPrice": 208.29,
                 "closePrice": 186.67,
-                "amount": null,
+                "amount": 10,
                 "profitLose": -21.62,
                 "dateOpen": "2023-02-20T20:30:00",
                 "dateClose": "2023-03-02T14:30:00",
@@ -220,11 +221,12 @@
         "createDate": "2023-08-22T00:13:32.825902",
         "pairStock": "TSLA",
         "resampleFreq": "60min",
+        "amount": 5,
         "tradeList": [
             {
                 "openPrice": 211.90,
                 "closePrice": 189.95,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 21.95,
                 "dateOpen": "2023-02-09T16:00:00",
                 "dateClose": "2023-02-13T15:00:00",
@@ -236,7 +238,7 @@
             {
                 "openPrice": 211.06,
                 "closePrice": 190.99,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 20.07,
                 "dateOpen": "2023-02-09T17:00:00",
                 "dateClose": "2023-03-02T15:00:00",
@@ -248,7 +250,7 @@
             {
                 "openPrice": 212.21,
                 "closePrice": 191.43,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 20.78,
                 "dateOpen": "2023-02-09T18:00:00",
                 "dateClose": "2023-03-02T16:00:00",
@@ -260,7 +262,7 @@
             {
                 "openPrice": 211.12,
                 "closePrice": 188.87,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 22.25,
                 "dateOpen": "2023-02-09T19:00:00",
                 "dateClose": "2023-03-02T17:00:00",
@@ -272,7 +274,7 @@
             {
                 "openPrice": 195.22,
                 "closePrice": 216.86,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 21.64,
                 "dateOpen": "2023-02-10T19:00:00",
                 "dateClose": "2023-02-16T16:00:00",
@@ -284,7 +286,7 @@
             {
                 "openPrice": 189.95,
                 "closePrice": 210.08,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 20.13,
                 "dateOpen": "2023-02-13T15:00:00",
                 "dateClose": "2023-02-15T16:00:00",
@@ -296,7 +298,7 @@
             {
                 "openPrice": 194.16,
                 "closePrice": 215.15,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 21.00,
                 "dateOpen": "2023-02-13T16:00:00",
                 "dateClose": "2023-02-16T17:00:00",
@@ -308,7 +310,7 @@
             {
                 "openPrice": 193.30,
                 "closePrice": 213.37,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 20.07,
                 "dateOpen": "2023-02-13T17:00:00",
                 "dateClose": "2023-02-15T17:00:00",
@@ -320,7 +322,7 @@
             {
                 "openPrice": 210.08,
                 "closePrice": 189.61,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 20.47,
                 "dateOpen": "2023-02-15T16:00:00",
                 "dateClose": "2023-03-02T18:00:00",
@@ -332,7 +334,7 @@
             {
                 "openPrice": 213.37,
                 "closePrice": 190.29,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 23.09,
                 "dateOpen": "2023-02-15T17:00:00",
                 "dateClose": "2023-03-02T19:00:00",
@@ -344,7 +346,7 @@
             {
                 "openPrice": 212.02,
                 "closePrice": 189.30,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 22.72,
                 "dateOpen": "2023-02-15T18:00:00",
                 "dateClose": "2023-03-02T20:00:00",
@@ -356,7 +358,7 @@
             {
                 "openPrice": 216.86,
                 "closePrice": 195.84,
-                "amount": null,
+                "amount": 5,
                 "profitLose": 21.03,
                 "dateOpen": "2023-02-16T16:00:00",
                 "dateClose": "2023-02-22T15:00:00",
@@ -380,11 +382,12 @@
         "createDate": "2023-08-22T00:14:27.845743",
         "pairStock": "AAPL",
         "resampleFreq": "30min",
+        "amount": 100,
         "tradeList": [
             {
                 "openPrice": 156.22,
                 "closePrice": 146.10,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.12,
                 "dateOpen": "2023-02-03T15:30:00",
                 "dateClose": "2023-02-24T16:00:00",
@@ -396,7 +399,7 @@
             {
                 "openPrice": 155.79,
                 "closePrice": 145.65,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.14,
                 "dateOpen": "2023-02-03T16:00:00",
                 "dateClose": "2023-03-01T15:30:00",
@@ -408,7 +411,7 @@
             {
                 "openPrice": 156.51,
                 "closePrice": 146.40,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.11,
                 "dateOpen": "2023-02-03T16:30:00",
                 "dateClose": "2023-02-24T15:00:00",
@@ -420,7 +423,7 @@
             {
                 "openPrice": 155.72,
                 "closePrice": 145.36,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.37,
                 "dateOpen": "2023-02-03T17:00:00",
                 "dateClose": "2023-03-01T19:30:00",
@@ -432,7 +435,7 @@
             {
                 "openPrice": 156.28,
                 "closePrice": 146.26,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.03,
                 "dateOpen": "2023-02-03T17:30:00",
                 "dateClose": "2023-02-24T17:30:00",
@@ -444,7 +447,7 @@
             {
                 "openPrice": 154.82,
                 "closePrice": 144.45,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.37,
                 "dateOpen": "2023-02-07T18:00:00",
                 "dateClose": "2023-03-02T14:30:00",
@@ -456,7 +459,7 @@
             {
                 "openPrice": 154.66,
                 "closePrice": 144.36,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.31,
                 "dateOpen": "2023-02-15T16:30:00",
                 "dateClose": "2023-03-02T15:00:00",
@@ -468,7 +471,7 @@
             {
                 "openPrice": 155.28,
                 "closePrice": 145.24,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.04,
                 "dateOpen": "2023-02-15T17:00:00",
                 "dateClose": "2023-03-01T20:30:00",
@@ -480,7 +483,7 @@
             {
                 "openPrice": 154.65,
                 "closePrice": 144.57,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.08,
                 "dateOpen": "2023-02-15T17:30:00",
                 "dateClose": "2023-03-02T15:30:00",
@@ -492,7 +495,7 @@
             {
                 "openPrice": 155.01,
                 "closePrice": 144.49,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.53,
                 "dateOpen": "2023-02-15T19:00:00",
                 "dateClose": "2023-03-02T16:00:00",
@@ -504,7 +507,7 @@
             {
                 "openPrice": 155.24,
                 "closePrice": 145.24,
-                "amount": null,
+                "amount": 100,
                 "profitLose": 10.01,
                 "dateOpen": "2023-02-15T19:30:00",
                 "dateClose": "2023-03-01T21:00:00",
