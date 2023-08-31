@@ -18,27 +18,6 @@
             </li>
         </ul>
     </div>
-    <!-- <ul class="navbar-nav" style="color: white" *ngIf="!isLoggedUser()">
-        <li class="nav-item">
-            <button type="button" style="padding: 5px;" class="btn btn-primary" data-toggle="modal"
-                data-target="#exampleModalCenter"> <a class="nav-link" (click)="openDialogLogin()"
-                    style="font-family: Palatino; color: white;">Log in</a>
-            </button>
-        </li>
-        <li class="nav-item">
-            <button type="button" style="padding: 5px;" class="btn btn-info" data-toggle="modal"
-                data-target="#exampleModalCenter"> <a class="nav-link" (click)="openDialogReg()"
-                    style="font-family: Palatino; color: white;">Sign up</a>
-            </button>
-        </li>
-    </ul> -->
-    <!-- <ul class="navbar-nav" style="color: white" *ngIf="isLoggedUser()">
-        <li class="nav-item">
-            <span style="font-family: Palatino; color: white;">{{getLoggedUser().name}}
-                {{getLoggedUser().lastname}}</span>
-        </li>
-    </ul> -->
-
     <nav id="mySidenav" class="sidenav">
         <ul class="list-unstyled component test">
             <li class="nav-item">
@@ -47,17 +26,18 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" (click)="closeNav()" style="font-family: Palatino; margin-bottom: 10px;"
-                    routerLink="/company">Companies</a>
+                    routerLink="/bot">Start BOT</a>
             </li>
-            <!-- <li class="nav-item" (click)="closeNav()" *ngIf="isLoggedUser()">
-                <a class="nav-link" style="font-family: Palatino;" routerLink="/profile">Profile</a>
-            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" (click)="closeNav()" style="font-family: Palatino; margin-bottom: 10px;"
+                    routerLink="/history">History</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="closeNav()" style="font-family: Palatino; margin-bottom: 10px;"
+                    routerLink="/chart">Analysis</a>
+            </li>
         </ul>
         <a href="javascript:void(0)" class="closebtn" style="font-family: Palatino" (click)="closeNav()">&times;</a>
-        <!--<form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>-->
     </nav>
 </nav>
 <app-stock-bar></app-stock-bar>

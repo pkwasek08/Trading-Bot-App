@@ -1,0 +1,15 @@
+.strategy-details-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+h2 {
+    text-align: center;
+}
+
+ul {
+    margin-top: 10px;
+}

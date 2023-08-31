@@ -29,6 +29,7 @@ import { TradesListComponent } from './trades-list/trades-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { StrategyDetailsComponent } from './strategy-details/strategy-details.component';
 
 const materialForm = [
   MatButtonModule,
@@ -46,7 +47,8 @@ const materialForm = [
     ChartBudgetComponent,
     BotsHistoryComponent,
     BotDetailsComponent,
-    TradesListComponent
+    TradesListComponent,
+    StrategyDetailsComponent
   ],
   imports: [
     BrowserModule,
