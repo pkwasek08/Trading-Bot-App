@@ -48,6 +48,7 @@ export class StartBotComponent implements OnInit {
   ngOnInit(): void { }
 
   onClickSubmitBtn() {
+    this.checkRsiLevels();
     if (this.form.valid && this.dateValidation()) {
       this.isShowSpinner = true;
       console.log('Form submitted successfully');
@@ -163,5 +164,14 @@ export class StartBotComponent implements OnInit {
           this.isShowSpinner = false;
         }
       });
+  }
+
+  private checkRsiLevels() {
+    if (!this.rsiStrategyActive()) {
+      this.form.patchValue({
+        rsiHeightLevel: 0,
+        rsiLowLevel: 0,
+      });
+    }
   }
 }

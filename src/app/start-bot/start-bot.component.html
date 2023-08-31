@@ -62,8 +62,7 @@
                                     <mat-select formControlName="resampleFreq">
                                         <mat-option value="30min">30min</mat-option>
                                         <mat-option value="60min">1h</mat-option>
-                                        <mat-option value="4h">4h</mat-option>
-                                        <mat-option value="1d">1d</mat-option>
+                                        <mat-option value="240min">4h</mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="form.get('resampleFreq')?.hasError('required')">Resample Freq is
                                         required</mat-error>
@@ -80,25 +79,22 @@
                                     <mat-label>Rsi Height Level</mat-label>
                                     <input type="number" min="1" matInput placeholder="Rsi Height Level"
                                         formControlName="rsiHeightLevel">
-                                    <mat-error *ngIf="form.get('rsiHeightLevel')?.hasError('required')">Rsi Height Level
-                                        is
-                                        required</mat-error>
+                                    <mat-error *ngIf="form.get('rsiHeightLevel')?.hasError('required')">Rsi Height Level is required</mat-error>
                                 </mat-form-field>
                                 <mat-form-field *ngIf="rsiStrategyActive()">
                                     <mat-label>Rsi Low Level</mat-label>
                                     <input type="number" min="1" matInput placeholder="rsiLowLevel"
                                         formControlName="rsiLowLevel">
-                                    <mat-error *ngIf="form.get('rsiLowLevel')?.hasError('required')">Rsi Low Level is
-                                        required</mat-error>
+                                    <mat-error *ngIf="form.get('rsiLowLevel')?.hasError('required')">Rsi Low Level is required</mat-error>
                                 </mat-form-field>
                                 <mat-form-field *ngIf="!rsiStrategyActive()">
                                     <mat-label>BBands Height Level</mat-label>
-                                    <input type="number" min="0.5" matInput placeholder="BBands height level"
+                                    <input type="number" min="0" step=".01" matInput placeholder="BBands height level"
                                         formControlName="bbandsHeightLevel">
                                 </mat-form-field>
                                 <mat-form-field *ngIf="!rsiStrategyActive()">
                                     <mat-label>BBands Low Level</mat-label>
-                                    <input type="number" min="0.5" matInput placeholder="BBands low level"
+                                    <input type="number" min="0" step=".01" matInput placeholder="BBands low level"
                                         formControlName="bbandsLowLevel">
                                 </mat-form-field>
                                 <mat-form-field>

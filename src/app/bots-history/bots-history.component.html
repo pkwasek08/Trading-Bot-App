@@ -2,56 +2,82 @@
     <div style="text-align: -webkit-center; " *ngIf="isShowSpinner">
         <mat-spinner style="margin-top: 30px;" [diameter]="200"></mat-spinner>
     </div>
-    <div class="start-bot-content" *ngIf="!isShowSpinner">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Create Date</th>
-                    <th scope="col">Stock</th>
-                    <th scope="col">Budget</th>
-                    <th scope="col">Result</th>
-                    <th scope="col">Freq</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">End Date</th>
-                    <th scope="col">Parameters</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngIf="botsDetailsList == null || botsDetailsList.length == 0">
-                    <td colspan="10">No Data</td>
-                </tr>
-                <tr *ngFor="let bot of botsDetailsList" style="vertical-align: middle;">
-                    <td>{{bot.name}}</td>
-                    <td>{{bot.createDate | date: 'dd.MM.yyyy HH:mm:ss'}}</td>
-                    <td>{{bot.pairStock}}</td>
-                    <td>{{bot.budget}}$</td>
-                    <td style="color: #c52323" *ngIf="0 > bot.resultValue">
+    <div class="start-bot-content" style="padding-top: 5px;" [ngStyle]="{ 'display': isShowSpinner ? 'none' : 'block' }">
+        <table class="table table-striped" mat-table [dataSource]="dataSource" matSort>
+            <!-- <ng-container matColumnDef="lp">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+                <td mat-cell *matCellDef="let bot"> {{bot.lp}} </td>
+            </ng-container> -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let bot"> {{bot.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="strategy">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Strategy</th>
+                <td mat-cell *matCellDef="let bot"> {{bot.strategy}} </td>
+            </ng-container>
+            <ng-container matColumnDef="createDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Create Date</th>
+                <td mat-cell *matCellDef="let bot"> {{bot.createDate | date: 'dd.MM.yyyy HH:mm:ss'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="pairStock">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Stock</th>
+                <td mat-cell *matCellDef="let bot"> {{bot.pairStock}} </td>
+            </ng-container>
+            <ng-container matColumnDef="budget">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Budget</th>
+                <td mat-cell *matCellDef="let bot"> {{bot.budget}} </td>
+            </ng-container>
+            <ng-container matColumnDef="resultValue">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Result</th>
+                <td mat-cell *matCellDef="let bot">
+                    <label style="color: #c52323" *ngIf="0 > bot.resultValue">
                         <b>{{bot.resultValue}}$<br>[{{bot.resultValue-bot.budget | number:'1.2-2'}}]</b>
-                    </td>
-                    <td *ngIf="bot.resultValue == 0"><b>{{bot.resultValue}}$</b></td>
-                    <td style="color: green;" *ngIf="bot.resultValue > 0">
+                    </label>
+                    <label *ngIf="bot.resultValue == 0"><b>{{bot.resultValue}}$</b></label>
+                    <label style="color: green;" *ngIf="bot.resultValue > 0">
                         <b>{{bot.resultValue}}$<br>[{{bot.resultValue-bot.budget | number:'1.2-2'}}]</b>
-                    </td>
-                    <td>{{bot.resampleFreq}}</td>
-                    <td>{{bot.startDate | date: 'dd.MM.yyyy'}}</td>
-                    <td>{{bot.endDate | date: 'dd.MM.yyyy'}}</td>
-                    <td style="text-align: left;">
-                        <ul class="dots-list">
-                            <li class="dot">Amount: {{parseParameters(bot.parameters).amount}}</li>
-                            <li class="dot">RSI Height Level: {{parseParameters(bot.parameters).rsiHeightLevel}}</li>
-                            <li class="dot">RSI Low Level: {{parseParameters(bot.parameters).rsiLowLevel}}</li>
-                            <li class="dot">Stop Loss: {{parseParameters(bot.parameters).stopLoss}}</li>
-                            <li class="dot">Take Profit: {{parseParameters(bot.parameters).takeProfit}}</li>
-                        </ul>
-                    </td>
-                    <td *ngIf="deleteBotId !== bot.id">
-                        <button type="button" class="btn btn-primary" (click)="openBotDetails(bot)">Details</button>
-                        <button type="button" class="btn btn-danger" (click)="onClickRemoveBot(bot.id)">Remove</button>
-                    </td>
-                    <td *ngIf="deleteBotId === bot.id"><mat-spinner></mat-spinner></td>
-                </tr>
+                    </label>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="resampleFreq">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Freq</th>
+                <td mat-cell *matCellDef="let bot"> {{bot.resampleFreq}}</td>
+            </ng-container>
+            <ng-container matColumnDef="startDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Date</th>
+                <td mat-cell *matCellDef="let bot"> {{bot.startDate | date: 'dd.MM.yyyy'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="endDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>End Date</th>
+                <td mat-cell *matCellDef="let bot"> {{bot.endDate | date: 'dd.MM.yyyy'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="parameters">
+                <th mat-header-cell *matHeaderCellDef>Parameters</th>
+                <td mat-cell *matCellDef="let bot" style="text-align: left;">
+                    <ul class="dots-list">
+                        <li class="dot">Amount: {{parseParameters(bot.parameters).amount}}</li>
+                        <li class="dot">RSI Height Level: {{parseParameters(bot.parameters).rsiHeightLevel}}</li>
+                        <li class="dot">RSI Low Level: {{parseParameters(bot.parameters).rsiLowLevel}}</li>
+                        <li class="dot">Stop Loss: {{parseParameters(bot.parameters).stopLoss}}</li>
+                        <li class="dot">Take Profit: {{parseParameters(bot.parameters).takeProfit}}</li>
+                    </ul>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let bot">
+                    <button *ngIf="deleteBotId !== bot.id" type="button" class="btn btn-primary"
+                        (click)="openBotDetails(bot)">Details</button>
+                    <button *ngIf="deleteBotId !== bot.id" type="button" class="btn btn-danger"
+                        (click)="onClickRemoveBot(bot.id)">Remove</button>
+                    <label *ngIf="deleteBotId === bot.id"><mat-spinner></mat-spinner></label>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons [pageSize]="5">
+        </mat-paginator>
     </div>
 </div>
