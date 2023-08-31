@@ -13,6 +13,8 @@
         "pairStock": "TSLA",
         "resampleFreq": "30min",
         "amount": 10,
+        "roi": 1.00,
+        "wlRatio": 3.75,
         "tradeList": [
             {
                 "openPrice": 211.04,
@@ -222,6 +224,8 @@
         "pairStock": "TSLA",
         "resampleFreq": "60min",
         "amount": 5,
+        "roi": 5.00,
+        "wlRatio": 15.50,
         "tradeList": [
             {
                 "openPrice": 211.90,
@@ -383,6 +387,8 @@
         "pairStock": "AAPL",
         "resampleFreq": "30min",
         "amount": 100,
+        "roi": 13.00,
+        "wlRatio": 10.00,
         "tradeList": [
             {
                 "openPrice": 156.22,

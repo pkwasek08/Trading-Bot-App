@@ -20,6 +20,8 @@
         "barDataList": [],
         "budgetBefore": 1000000,
         "budgetAfter": 1019544.580,
+        "roi": 5.00,
+        "wlRatio": 15.50,
         "tradeList": [
             {
                 "openPrice": 211.04,

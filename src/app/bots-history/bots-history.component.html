@@ -2,7 +2,8 @@
     <div style="text-align: -webkit-center; " *ngIf="isShowSpinner">
         <mat-spinner style="margin-top: 30px;" [diameter]="200"></mat-spinner>
     </div>
-    <div class="start-bot-content" style="padding-top: 5px;" [ngStyle]="{ 'display': isShowSpinner ? 'none' : 'block' }">
+    <div class="start-bot-content" style="padding-top: 5px;"
+        [ngStyle]="{ 'display': isShowSpinner ? 'none' : 'block' }">
         <table class="table table-striped" mat-table [dataSource]="dataSource" matSort>
             <!-- <ng-container matColumnDef="lp">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
@@ -28,6 +29,22 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Budget</th>
                 <td mat-cell *matCellDef="let bot"> {{bot.budget}} </td>
             </ng-container>
+            <ng-container matColumnDef="roi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>ROI</th>
+                <td mat-cell *matCellDef="let bot"> 
+                    <label style="color: #c52323" *ngIf="0 > bot.roi"><b>{{bot.roi}}%</b></label>
+                    <label *ngIf="bot.roi == 0"><b>{{bot.roi}}%</b></label>
+                    <label style="color: green;" *ngIf="bot.roi > 0"><b>{{bot.roi}}%</b></label>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="wlRatio">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Win-Lose Ratio</th>
+                <td mat-cell *matCellDef="let bot">
+                    <label style="color: #c52323" *ngIf="0 > bot.wlRatio"><b>{{bot.wlRatio}}%</b></label>
+                    <label *ngIf="bot.wlRatio == 0"><b>{{bot.wlRatio}}%</b></label>
+                    <label style="color: green;" *ngIf="bot.wlRatio > 0"><b>{{bot.wlRatio}}%</b></label>
+                </td>
+            </ng-container>
             <ng-container matColumnDef="resultValue">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Result</th>
                 <td mat-cell *matCellDef="let bot">
@@ -52,7 +69,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>End Date</th>
                 <td mat-cell *matCellDef="let bot"> {{bot.endDate | date: 'dd.MM.yyyy'}} </td>
             </ng-container>
-            <ng-container matColumnDef="parameters">
+            <!-- <ng-container matColumnDef="parameters">
                 <th mat-header-cell *matHeaderCellDef>Parameters</th>
                 <td mat-cell *matCellDef="let bot" style="text-align: left;">
                     <ul class="dots-list">
@@ -63,7 +80,7 @@
                         <li class="dot">Take Profit: {{parseParameters(bot.parameters).takeProfit}}</li>
                     </ul>
                 </td>
-            </ng-container>
+            </ng-container> -->
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef>Action</th>
                 <td mat-cell *matCellDef="let bot">

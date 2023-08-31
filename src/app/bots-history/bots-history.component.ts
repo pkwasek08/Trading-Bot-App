@@ -20,8 +20,8 @@ export class BotsHistoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   dataSource!: MatTableDataSource<BotDetails>;
-  displayedColumns: string[] = ['name', 'strategy', 'createDate', 'pairStock', 'budget',
-    'resultValue', 'resampleFreq', 'startDate', 'endDate', 'parameters', 'action'];
+  displayedColumns: string[] = ['name', 'strategy', 'createDate', 'pairStock', 'budget', 'roi', 
+  'wlRatio', 'resultValue', 'resampleFreq', 'startDate', 'endDate',  'action']; //'parameters'
 
   constructor(
     private botsService: BotService,

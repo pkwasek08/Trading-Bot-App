@@ -12,5 +12,7 @@ export class BotDetails{
     parameters!: string;
     amount!: number;
     resampleFreq!: string;
+    roi!: number;
+    wlRatio!: number;
     tradeList!: Trade[];
 }

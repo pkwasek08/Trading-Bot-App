@@ -23,6 +23,26 @@
                         <td>{{botDetails.budget}}$</td>
                     </tr>
                     <tr>
+                        <td><b>ROI</b></td>
+                        <td style="color: #c52323" *ngIf="0 > botDetails.roi">
+                            <b>{{botDetails.roi}}%</b>
+                        </td>
+                        <td *ngIf="botDetails.roi == 0"><b>{{botDetails.roi}}%</b></td>
+                        <td style="color: green;" *ngIf="botDetails.roi > 0">
+                            <b>{{botDetails.roi}}%</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Win-Lose Ratio</b></td>
+                        <td style="color: #c52323" *ngIf="0 > botDetails.wlRatio">
+                            <b>{{botDetails.wlRatio}}%</b>
+                        </td>
+                        <td *ngIf="botDetails.wlRatio == 0"><b>{{botDetails.wlRatio}}%</b></td>
+                        <td style="color: green;" *ngIf="botDetails.wlRatio > 0">
+                            <b>{{botDetails.wlRatio}}%</b>
+                        </td>
+                    </tr>
+                    <tr>
                         <td><b>Result</b></td>
                         <td style="color: #c52323" *ngIf="0 > botDetails.resultValue">
                             <b>{{botDetails.resultValue}}$<br>[{{botDetails.resultValue-botDetails.budget |

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { NewBot } from '../models/NewBot';
 import { NewBotResponse } from '../models/NewBotResponse';
@@ -21,6 +21,8 @@ export class RsiBotService {
           parameters: response.result.parameters,
           budgetBefore: response.result.budgetBefore,
           budgetAfter: response.result.budgetAfter,
+          roi: response.result.roi,
+          wlRatio: response.result.wlRatio,
           tradeList: response.result.tradeList
         };
         return newBotResponse;

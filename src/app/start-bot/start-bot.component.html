@@ -69,7 +69,8 @@
                                 </mat-form-field>
                                 <mat-form-field>
                                     <mat-label>Amount</mat-label>
-                                    <input type="number" min="1" matInput placeholder="Amount of stock" formControlName="amount">
+                                    <input type="number" min="1" matInput placeholder="Amount of stock"
+                                        formControlName="amount">
                                     <mat-error *ngIf="form.get('amount')?.hasError('required')">Amount is
                                         required</mat-error>
                                 </mat-form-field>
@@ -79,13 +80,15 @@
                                     <mat-label>Rsi Height Level</mat-label>
                                     <input type="number" min="1" matInput placeholder="Rsi Height Level"
                                         formControlName="rsiHeightLevel">
-                                    <mat-error *ngIf="form.get('rsiHeightLevel')?.hasError('required')">Rsi Height Level is required</mat-error>
+                                    <mat-error *ngIf="form.get('rsiHeightLevel')?.hasError('required')">Rsi Height Level
+                                        is required</mat-error>
                                 </mat-form-field>
                                 <mat-form-field *ngIf="rsiStrategyActive()">
                                     <mat-label>Rsi Low Level</mat-label>
                                     <input type="number" min="1" matInput placeholder="rsiLowLevel"
                                         formControlName="rsiLowLevel">
-                                    <mat-error *ngIf="form.get('rsiLowLevel')?.hasError('required')">Rsi Low Level is required</mat-error>
+                                    <mat-error *ngIf="form.get('rsiLowLevel')?.hasError('required')">Rsi Low Level is
+                                        required</mat-error>
                                 </mat-form-field>
                                 <mat-form-field *ngIf="!rsiStrategyActive()">
                                     <mat-label>BBands Height Level</mat-label>
@@ -101,8 +104,8 @@
                                     <mat-label>Stop Loss</mat-label>
                                     <input type="number" min="1" matInput placeholder="Stop Loss"
                                         formControlName="stopLoss">
-                                        <mat-error *ngIf="form.get('stopLoss')?.hasError('required')">Stop Loss is
-                                            required</mat-error>
+                                    <mat-error *ngIf="form.get('stopLoss')?.hasError('required')">Stop Loss is
+                                        required</mat-error>
                                 </mat-form-field>
                                 <mat-form-field>
                                     <mat-label>Take Profit</mat-label>
@@ -129,22 +132,38 @@
                 <div class="start-bot-result-budget" *ngIf="(animationDone$ | async)?.toState === 'shown'">
                     <h2>BUDGET RESULT</h2>
                     <div>
-                        <h3><label>BEFORE</label><label
-                                style="margin-left: 10px;">{{newBotResponse.budgetBefore}}$</label></h3>
+                        <div><label>Before</label><label
+                                style="margin-left: 10px;"><b>{{newBotResponse.budgetBefore}}$</b></label></div>
                     </div>
                     <div>
-                        <h3><label>AFTER</label><label
-                                style="margin-left: 10px;">{{newBotResponse.budgetAfter}}$</label></h3>
+                        <div><label>After</label><label
+                                style="margin-left: 10px;"><b>{{newBotResponse.budgetAfter}}$</b></label></div>
                     </div>
                     <div>
-                        <h3 *ngIf="getFinalResultBudget() > 0"><label>RESULT</label><label
-                                style="margin-left: 10px; color: green;">+{{getFinalResultBudget()}}$</label></h3>
-                        <h3 *ngIf="getFinalResultBudget() == 0"><label>RESULT</label><label
-                                style="margin-left: 10px;">{{getFinalResultBudget()}}$</label></h3>
-                        <h3 *ngIf="0 > getFinalResultBudget()"><label>RESULT</label><label
-                                style="margin-left: 10px; color: #c52323">-{{getFinalResultBudget()}}$</label></h3>
+                        <div *ngIf="getFinalResultBudget() > 0"><label>Result</label><label
+                                style="margin-left: 10px; color: green;"><b>+{{getFinalResultBudget()}}$</b></label></div>
+                        <div *ngIf="getFinalResultBudget() == 0"><label>Result</label><label
+                                style="margin-left: 10px;"><b>{{getFinalResultBudget()}}$</b></label></div>
+                        <div *ngIf="0 > getFinalResultBudget()"><label>Result</label><label
+                                style="margin-left: 10px; color: #c52323"><b>-{{getFinalResultBudget()}}$</b></label></div>
                     </div>
-                    <div style="width: 100%;">
+                    <div>
+                        <div *ngIf="newBotResponse.roi > 0"><label>ROI</label><label
+                                style="margin-left: 10px; color: green;"><b>+{{newBotResponse.roi}}%</b></label></div>
+                        <div *ngIf="newBotResponse.roi == 0"><label>ROI</label><label
+                                style="margin-left: 10px;"><b>{{newBotResponse.roi}}%</b></label></div>
+                        <div *ngIf="0 > newBotResponse.roi"><label>ROI</label><label
+                                style="margin-left: 10px; color: #c52323"><b>-{{newBotResponse.roi}}%</b></label></div>
+                    </div>
+                    <div>
+                        <div *ngIf="newBotResponse.wlRatio > 0"><label>Win-Lose Ratio</label><label
+                                style="margin-left: 10px; color: green;"><b>+{{newBotResponse.wlRatio}}%</b></label></div>
+                        <div *ngIf="newBotResponse.wlRatio == 0"><label>Win-Lose Ratio</label><label
+                                style="margin-left: 10px;"><b>{{newBotResponse.wlRatio}}%</b></label></div>
+                        <div *ngIf="0 > newBotResponse.wlRatio"><label>Win-Lose Ratio</label><label
+                                style="margin-left: 10px; color: #c52323">-<b>{{newBotResponse.wlRatio}}%</b></label></div>
+                    </div>
+                    <div style="width: 100%; margin-bottom: 0px;">
                         <button mat-raised-button type="button" class="btn btn-primary"
                             [disabled]="newBotResponse.tradeList == null || newBotResponse.tradeList.length == 0"
                             style="background-color: rgb(76, 76, 76); color: white; font-size: 13px; width: 100%; margin: 0px; padding: 5px;"

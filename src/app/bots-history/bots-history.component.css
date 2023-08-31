@@ -2,6 +2,11 @@ tr {
     vertical-align: middle;
 }
 
-.mat-mdc-header-cell  {
+.mat-mdc-header-cell {
+    text-align: center;
+    padding-left: 20px;
+}
+
+.mat-mdc-cell {
     text-align: center;
 }
