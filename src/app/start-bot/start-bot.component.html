@@ -9,12 +9,10 @@
                         <table>
                             <tr>
                                 <mat-form-field appearance="fill">
-                                    <mat-label>Bot set</mat-label>
-                                    <mat-select formControlName="botSet">
-                                        <mat-option value="NEW_BOT">NEW_BOT</mat-option>
-                                        <!--<mat-option *ngFor="let testSetsInfo of testSetsInfoList" [value]="testSetsInfo.id">
-                                {{testSetsInfo.testName}}
-                            </mat-option>-->
+                                    <mat-label>Bot strategy</mat-label>
+                                    <mat-select formControlName="strategy">
+                                        <mat-option value="RSI">RSI</mat-option>
+                                        <mat-option value="BBANDS">BBANDS</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </tr>
@@ -78,7 +76,7 @@
                                 </mat-form-field>
                             </tr>
                             <tr>
-                                <mat-form-field>
+                                <mat-form-field *ngIf="rsiStrategyActive()">
                                     <mat-label>Rsi Height Level</mat-label>
                                     <input type="number" min="1" matInput placeholder="Rsi Height Level"
                                         formControlName="rsiHeightLevel">
@@ -86,17 +84,29 @@
                                         is
                                         required</mat-error>
                                 </mat-form-field>
-                                <mat-form-field>
+                                <mat-form-field *ngIf="rsiStrategyActive()">
                                     <mat-label>Rsi Low Level</mat-label>
                                     <input type="number" min="1" matInput placeholder="rsiLowLevel"
                                         formControlName="rsiLowLevel">
                                     <mat-error *ngIf="form.get('rsiLowLevel')?.hasError('required')">Rsi Low Level is
                                         required</mat-error>
                                 </mat-form-field>
+                                <mat-form-field *ngIf="!rsiStrategyActive()">
+                                    <mat-label>BBands Height Level</mat-label>
+                                    <input type="number" min="0.5" matInput placeholder="BBands height level"
+                                        formControlName="bbandsHeightLevel">
+                                </mat-form-field>
+                                <mat-form-field *ngIf="!rsiStrategyActive()">
+                                    <mat-label>BBands Low Level</mat-label>
+                                    <input type="number" min="0.5" matInput placeholder="BBands low level"
+                                        formControlName="bbandsLowLevel">
+                                </mat-form-field>
                                 <mat-form-field>
                                     <mat-label>Stop Loss</mat-label>
                                     <input type="number" min="1" matInput placeholder="Stop Loss"
                                         formControlName="stopLoss">
+                                        <mat-error *ngIf="form.get('stopLoss')?.hasError('required')">Stop Loss is
+                                            required</mat-error>
                                 </mat-form-field>
                                 <mat-form-field>
                                     <mat-label>Take Profit</mat-label>

@@ -1,0 +1,182 @@
+{
+    "execDetails": {
+        "exeTime": 269,
+        "dbTime": 269
+    },
+    "result": {
+        "parameters": {
+            "startDate": "2023-03-02",
+            "endDate": "2023-05-02",
+            "stock": "TSLA",
+            "resampleFreq": "60min",
+            "name": "TEST_BBANDS",
+            "budget": 1000000,
+            "stopLoss": 30,
+            "takeProfit": null,
+            "amount": 1000,
+            "bbandsHeightLevel": 0.5,
+            "bbandsLowLevel": 0.5
+        },
+        "barDataList": [],
+        "budgetBefore": 1000000,
+        "budgetAfter": 1057210.000,
+        "tradeList": [
+            {
+                "openPrice": 181.44,
+                "closePrice": 192.04,
+                "amount": 1000,
+                "profitLose": 10600.00,
+                "dateOpen": "2023-03-08T15:00:00",
+                "dateClose": "2023-03-21T14:00:00",
+                "stopLoss": 30,
+                "takeProfit": 6.26,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "BUY"
+            },
+            {
+                "openPrice": 180.54,
+                "closePrice": 167.11,
+                "amount": 1000,
+                "profitLose": 13430.00,
+                "dateOpen": "2023-03-14T14:00:00",
+                "dateClose": "2023-04-20T14:00:00",
+                "stopLoss": 30,
+                "takeProfit": 6.07,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "SELL"
+            },
+            {
+                "openPrice": 192.04,
+                "closePrice": 181.69,
+                "amount": 1000,
+                "profitLose": 10350.00,
+                "dateOpen": "2023-03-21T14:00:00",
+                "dateClose": "2023-04-06T14:00:00",
+                "stopLoss": 30,
+                "takeProfit": 8.81,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "SELL"
+            },
+            {
+                "openPrice": 197.595,
+                "closePrice": 190.98,
+                "amount": 1000,
+                "profitLose": 6615.000,
+                "dateOpen": "2023-03-23T14:00:00",
+                "dateClose": "2023-03-23T19:00:00",
+                "stopLoss": 30,
+                "takeProfit": 6.595,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "SELL"
+            },
+            {
+                "openPrice": 195.96,
+                "closePrice": 188.5,
+                "amount": 1000,
+                "profitLose": 7460.00,
+                "dateOpen": "2023-03-27T14:00:00",
+                "dateClose": "2023-03-28T14:00:00",
+                "stopLoss": 30,
+                "takeProfit": 5.595,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "SELL"
+            },
+            {
+                "openPrice": 188.5,
+                "closePrice": 194.56,
+                "amount": 1000,
+                "profitLose": 6060.00,
+                "dateOpen": "2023-03-28T14:00:00",
+                "dateClose": "2023-03-29T14:00:00",
+                "stopLoss": 30,
+                "takeProfit": 3.32,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "BUY"
+            },
+            {
+                "openPrice": 194.56,
+                "closePrice": 188.08,
+                "amount": 1000,
+                "profitLose": 6480.00,
+                "dateOpen": "2023-03-29T14:00:00",
+                "dateClose": "2023-04-05T14:00:00",
+                "stopLoss": 30,
+                "takeProfit": 5.365,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "SELL"
+            },
+            {
+                "openPrice": 198.91,
+                "closePrice": 194.27,
+                "amount": 1000,
+                "profitLose": 4640.00,
+                "dateOpen": "2023-03-31T14:00:00",
+                "dateClose": "2023-04-03T15:00:00",
+                "stopLoss": 30,
+                "takeProfit": 3.63,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "SELL"
+            },
+            {
+                "openPrice": 188.08,
+                "closePrice": 156.185,
+                "amount": 1000,
+                "profitLose": -31895.000,
+                "dateOpen": "2023-04-05T14:00:00",
+                "dateClose": "2023-04-26T14:00:00",
+                "stopLoss": 30,
+                "takeProfit": 4.575,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "BUY"
+            },
+            {
+                "openPrice": 177.02,
+                "closePrice": 187.05,
+                "amount": 1000,
+                "profitLose": 10030.00,
+                "dateOpen": "2023-04-10T14:00:00",
+                "dateClose": "2023-04-11T14:00:00",
+                "stopLoss": 30,
+                "takeProfit": 8.025,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "BUY"
+            },
+            {
+                "openPrice": 188.24,
+                "closePrice": 183.39,
+                "amount": 1000,
+                "profitLose": 4850.00,
+                "dateOpen": "2023-04-17T14:00:00",
+                "dateClose": "2023-04-17T16:00:00",
+                "stopLoss": 30,
+                "takeProfit": 3.24,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "SELL"
+            },
+            {
+                "openPrice": 156.185,
+                "closePrice": 162.185,
+                "amount": 1000,
+                "profitLose": 6000.000,
+                "dateOpen": "2023-04-26T14:00:00",
+                "dateClose": "2023-04-28T15:00:00",
+                "stopLoss": 30,
+                "takeProfit": 4.475,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "BUY"
+            },
+            {
+                "openPrice": 164.37,
+                "closePrice": 161.78,
+                "amount": 1000,
+                "profitLose": 2590.00,
+                "dateOpen": "2023-05-02T14:00:00",
+                "dateClose": "2023-05-02T15:00:00",
+                "stopLoss": 30,
+                "takeProfit": 2.57,
+                "comment": "The position has been closed because of SL or TP",
+                "type": "SELL"
+            }
+        ]
+    }
+}

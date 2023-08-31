@@ -6,6 +6,8 @@ export class NewBot {
     budget!: number;
     rsiHeightLevel!: number;
     rsiLowLevel!: number;
+    bbandsHeightLevel!: number;
+    bbandsLowLevel!: number;
     stopLoss!: number;
     takeProfit!: number;
     amount!: number;

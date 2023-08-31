@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 import { AnimationEvent } from "@angular/animations";
 import { MatDialog } from '@angular/material/dialog';
 import { ChartBudgetComponent } from '../chart-budget/chart-budget.component';
+import { BBandsBotService } from '../services/bbands-bot.service';
 
 @Component({
   selector: 'app-start-bot',
@@ -39,7 +40,8 @@ export class StartBotComponent implements OnInit {
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
     private fb: FormBuilder,
-    private rsiBotService: RsiBotService) {
+    private rsiBotService: RsiBotService,
+    private bbandsBotService: BBandsBotService) {
     this.initForm();
     this.stockList = ["TSLA", "AAPL", "GOOGL"];
   }
@@ -49,28 +51,11 @@ export class StartBotComponent implements OnInit {
     if (this.form.valid && this.dateValidation()) {
       this.isShowSpinner = true;
       console.log('Form submitted successfully');
-      this.rsiBotService.startRsiBot(this.form.value).subscribe(
-        {
-          next: (v) => {
-            this.newBotResponse = v;
-            this.responseFromBackend = true
-
-          },
-          error: (error) => {
-            this.snackBar.open(error.status + ' error :(', 'x', {
-              panelClass: 'custom-css-class-error',
-              duration: 5000,
-            });
-            this.isShowSpinner = false;
-          },
-          complete: () => {
-            this.snackBar.open('The BOT simulation has been completed', 'x', {
-              panelClass: 'custom-css-class-success',
-              duration: 5000,
-            });
-            this.isShowSpinner = false;
-          }
-        });
+      if (this.rsiStrategyActive()) {
+        this.startRsiBit();
+      } else {
+        this.startBBandsBot();
+      }
     }
   }
 
@@ -95,9 +80,13 @@ export class StartBotComponent implements OnInit {
     instance.tradeList = this.newBotResponse.tradeList;
   }
 
+  rsiStrategyActive(): boolean {
+    return this.form.get('strategy')?.value == 'RSI'
+  }
+
   private initForm() {
     this.form = this.fb.group({
-      botSet: ['NEW_BOT', Validators.required],
+      strategy: ['RSI', Validators.required],
       name: ['', Validators.required],
       stock: ['', Validators.required],
       resampleFreq: ['', Validators.required],
@@ -106,7 +95,9 @@ export class StartBotComponent implements OnInit {
       budget: ['', Validators.required],
       rsiHeightLevel: ['', Validators.required],
       rsiLowLevel: ['', Validators.required],
-      stopLoss: [''],
+      bbandsHeightLevel: [''],
+      bbandsLowLevel: [''],
+      stopLoss: ['', Validators.required],
       takeProfit: [''],
       amount: ['', Validators.required]
     });
@@ -124,5 +115,53 @@ export class StartBotComponent implements OnInit {
       duration: 5000,
     });
     return false;
+  }
+
+  private startRsiBit() {
+    this.rsiBotService.startRsiBot(this.form.value).subscribe(
+      {
+        next: (v) => {
+          this.newBotResponse = v;
+          this.responseFromBackend = true
+        },
+        error: (error) => {
+          this.snackBar.open(error.status + ' error :(', 'x', {
+            panelClass: 'custom-css-class-error',
+            duration: 5000,
+          });
+          this.isShowSpinner = false;
+        },
+        complete: () => {
+          this.snackBar.open('The BOT simulation has been completed', 'x', {
+            panelClass: 'custom-css-class-success',
+            duration: 5000,
+          });
+          this.isShowSpinner = false;
+        }
+      });
+  }
+
+  private startBBandsBot() {
+    this.bbandsBotService.startBbandsBot(this.form.value).subscribe(
+      {
+        next: (v) => {
+          this.newBotResponse = v;
+          this.responseFromBackend = true
+        },
+        error: (error) => {
+          this.snackBar.open(error.status + ' error :(', 'x', {
+            panelClass: 'custom-css-class-error',
+            duration: 5000,
+          });
+          this.isShowSpinner = false;
+        },
+        complete: () => {
+          this.snackBar.open('The BOT simulation has been completed', 'x', {
+            panelClass: 'custom-css-class-success',
+            duration: 5000,
+          });
+          this.isShowSpinner = false;
+        }
+      });
   }
 }

@@ -14,6 +14,12 @@ server.post('/bot/startRsiBot', (req, res) => {
   res.jsonp(responseData);
 });
 
+server.post('/bot/startBBandsBot', (req, res) => {
+  const responseFilePath = path.join(__dirname, 'src/assets/startBBandsBotResponse.json');
+  const responseData = require(responseFilePath);
+  res.jsonp(responseData);
+});
+
 server.get('/bot', (req, res) => {
   const responseFilePath = path.join(__dirname, 'src/assets/botsHistory.json');
   const responseData = require(responseFilePath);
