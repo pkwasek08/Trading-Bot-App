@@ -141,27 +141,23 @@
                     </div>
                     <div>
                         <div *ngIf="getFinalResultBudget() > 0"><label>Result</label><label
-                                style="margin-left: 10px; color: green;"><b>+{{getFinalResultBudget()}}$</b></label></div>
+                                style="margin-left: 10px; color: green;"><b>+{{getFinalResultBudget()}}$</b></label>
+                        </div>
                         <div *ngIf="getFinalResultBudget() == 0"><label>Result</label><label
                                 style="margin-left: 10px;"><b>{{getFinalResultBudget()}}$</b></label></div>
                         <div *ngIf="0 > getFinalResultBudget()"><label>Result</label><label
-                                style="margin-left: 10px; color: #c52323"><b>-{{getFinalResultBudget()}}$</b></label></div>
+                                style="margin-left: 10px; color: #c52323"><b>{{getFinalResultBudget()}}$</b></label>
+                        </div>
                     </div>
                     <div>
-                        <div *ngIf="newBotResponse.roi > 0"><label>ROI</label><label
-                                style="margin-left: 10px; color: green;"><b>+{{newBotResponse.roi}}%</b></label></div>
-                        <div *ngIf="newBotResponse.roi == 0"><label>ROI</label><label
-                                style="margin-left: 10px;"><b>{{newBotResponse.roi}}%</b></label></div>
-                        <div *ngIf="0 > newBotResponse.roi"><label>ROI</label><label
-                                style="margin-left: 10px; color: #c52323"><b>-{{newBotResponse.roi}}%</b></label></div>
+                        <div>
+                            <label>ROI</label><label style="margin-left: 10px;"><b>{{newBotResponse.roi}}%</b></label>
+                        </div>
                     </div>
                     <div>
-                        <div *ngIf="newBotResponse.wlRatio > 0"><label>Win-Lose Ratio</label><label
-                                style="margin-left: 10px; color: green;"><b>+{{newBotResponse.wlRatio}}%</b></label></div>
-                        <div *ngIf="newBotResponse.wlRatio == 0"><label>Win-Lose Ratio</label><label
-                                style="margin-left: 10px;"><b>{{newBotResponse.wlRatio}}%</b></label></div>
-                        <div *ngIf="0 > newBotResponse.wlRatio"><label>Win-Lose Ratio</label><label
-                                style="margin-left: 10px; color: #c52323">-<b>{{newBotResponse.wlRatio}}%</b></label></div>
+                        <div><label>Win-Lose Ratio</label><label
+                                style="margin-left: 10px;"><b>{{newBotResponse.wlRatio}}%</b></label>
+                        </div>
                     </div>
                     <div style="width: 100%; margin-bottom: 0px;">
                         <button mat-raised-button type="button" class="btn btn-primary"
