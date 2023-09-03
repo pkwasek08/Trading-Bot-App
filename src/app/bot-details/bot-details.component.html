@@ -24,7 +24,15 @@
                     </tr>
                     <tr>
                         <td><b>ROI</b></td>
-                        <td><b>{{botDetails.roi}}%</b></td>
+                        <td style="color: #c52323" *ngIf="0 > botDetails.roi">
+                            <b>{{botDetails.roi}}%</b>
+                        </td>
+                        <td *ngIf="botDetails.roi == 0">
+                            <b>{{botDetails.roi}}%</b>
+                        </td>
+                        <td style="color: green;" *ngIf="botDetails.roi > 0">
+                            <b>+{{botDetails.roi}}%</b>
+                        </td>
                     </tr>
                     <tr>
                         <td><b>Win-Lose Ratio</b></td>
@@ -79,9 +87,10 @@
             <app-trades-list [tradeList]="botDetails.tradeList" style="margin-left: 60px;"></app-trades-list>
         </div>
         <div class="start-bot-content" style="margin-top: 20px; display: flex; width: inherit;">
-            <app-chart-widget [stockPair]="botDetails.pairStock"
-                [interval]="botDetails.resampleFreq" style="width: 48%;"></app-chart-widget>
-            <app-chart-budget [tradeList]="botDetails.tradeList" [budget]="botDetails.budget" style="margin-left: 60px; width: 48%;"></app-chart-budget>
+            <app-chart-widget [stockPair]="botDetails.pairStock" [interval]="botDetails.resampleFreq"
+                style="width: 48%;"></app-chart-widget>
+            <app-chart-budget [tradeList]="botDetails.tradeList" [budget]="botDetails.budget"
+                style="margin-left: 60px; width: 48%;"></app-chart-budget>
         </div>
     </div>
 </div>

@@ -150,8 +150,14 @@
                         </div>
                     </div>
                     <div>
-                        <div>
-                            <label>ROI</label><label style="margin-left: 10px;"><b>{{newBotResponse.roi}}%</b></label>
+                        <div *ngIf="newBotResponse.roi > 0"><label>ROI</label><label
+                                style="margin-left: 10px; color: green;"><b>+{{newBotResponse.roi}}%</b></label>
+                        </div>
+                        <div *ngIf="newBotResponse.roi == 0"><label>ROI</label><label
+                                style="margin-left: 10px;"><b>{{newBotResponse.roi}}%</b></label>
+                        </div>
+                        <div *ngIf="0 > newBotResponse.roi"><label>ROI</label><label
+                                style="margin-left: 10px; color: #c52323"><b>{{newBotResponse.roi}}%</b></label>
                         </div>
                     </div>
                     <div>
