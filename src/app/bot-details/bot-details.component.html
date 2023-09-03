@@ -66,17 +66,26 @@
                         <td><b>Amount of stock</b></td>
                         <td>{{parseParameters(botDetails.parameters).amount}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="rsiStrategyActive()">
                         <td><b>RSI Height Level</b></td>
                         <td>{{parseParameters(botDetails.parameters).rsiHeightLevel}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="rsiStrategyActive()">
                         <td><b>RSI Low Level</b></td>
                         <td>{{parseParameters(botDetails.parameters).rsiLowLevel}}</td>
                     </tr>
+                    <tr *ngIf="!rsiStrategyActive()">
+                        <td><b>BBands Height Level</b></td>
+                        <td>{{parseParameters(botDetails.parameters).bbandsHeightLevel}}</td>
+                    </tr>
+                    <tr *ngIf="!rsiStrategyActive()">
+                        <td><b>BBands Low Level</b></td>
+                        <td>{{parseParameters(botDetails.parameters).bbandsLowLevel}}</td>
+                    </tr>
                     <tr>
                         <td><b>Take Profit</b></td>
-                        <td>{{parseParameters(botDetails.parameters).takeProfit}}</td>
+                        <td *ngIf="parseParameters(botDetails.parameters).takeProfit != null">{{parseParameters(botDetails.parameters).takeProfit}}</td>
+                        <td *ngIf="parseParameters(botDetails.parameters).takeProfit == null">-</td>
                     </tr>
                     <tr>
                         <td><b>Stop Loss</b></td>

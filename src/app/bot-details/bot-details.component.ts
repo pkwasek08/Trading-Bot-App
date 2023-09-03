@@ -27,4 +27,8 @@ export class BotDetailsComponent implements OnInit {
   parseParameters(parameters: string): any {
     return JSON.parse(parameters);
   }
+
+  rsiStrategyActive(): boolean {
+    return this.botDetails?.strategy == 'RSI'
+  }
 }
